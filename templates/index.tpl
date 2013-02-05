@@ -1,3 +1,3 @@
 {include file='header.tpl'}
-Hello, {$name}!
+Hello!
 {include file='footer.tpl'}
