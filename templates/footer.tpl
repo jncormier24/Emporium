@@ -1,1 +1,2 @@
-footer loaded.
+</body>
+</html>
