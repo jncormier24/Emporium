@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-02-05 19:26:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-02-19 13:55:11
          compiled from "./templates/index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17598823575109639f8c42e0-34069180%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c0360d049dff10f364dfc53ba2cc3958abf6ee6d' => 
     array (
       0 => './templates/index.tpl',
-      1 => 1360110385,
+      1 => 1360695290,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <div class="row container">
 	<div class="span4 offset3 hero-unit">
-		<form class="offset1 form-horizonal">
+		<form class="form-horizonal">
 			<input type="text" class="input-small" placeholder="Username">
 			<input type="password" class="input-small" placeholder="Password">
 			<div class="control-group">
@@ -32,6 +32,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<input type="checkbox">Remember Me
 					</label>
 					<button type="submit" class="btn">Sign In</button>
+				</div>
+				<div class="control">
+					<a href="#">Create Account</a>
+				</div>
+				<div class="control">
+					<a href="#">Forgot Password</a>
 				</div>
 			</div>
 		</form>
