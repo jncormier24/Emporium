@@ -1,14 +1,20 @@
 <!doctype html>
-<html lang=en>
+<html>
 	<head>
-		<title>Emporium</title>
-		<link href="/home/PLYMOUTH/jncormier/Home/git-checkout/emporium/externals/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="/home/PLYMOUTH/jncormier/Home/git-checkout/emporium/externals/bootstrap/js/bootstrap.min.js"></script>
+		<link href="./externals/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<script src="./externals/jquery-1.9.1.min.js"></script>
+		<script src="./externals/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<div id="navbar">
-			<div id="navbar-inner">
-				<a class="brand" href="#">Emporium</a>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="#">Emporium</a>
+					<ul class="nav">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">link</a></li>
+						<li><a href="#">Link</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
