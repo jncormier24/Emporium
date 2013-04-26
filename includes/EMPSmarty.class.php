@@ -5,17 +5,16 @@
  * v 1.0 1/29/13 
  * **/
 
-require( '/home/PLYMOUTH/jncormier/Home/git-checkout/emporium/externals/smarty/Smarty/Smarty.class.php' );
-class EMPSmarty extends Smarty{
-
+require_once( '/home/PLYMOUTH/jncormier/Home/git-checkout/emporium/externals/smarty/Smarty/Smarty.class.php' );
+class EMPSmarty extends smarty{
 	function __construct(){
 		parent::__construct();
 		
-		$this->setTemplateDir( './templates/' );	
+		//$this->setTemplateDir( './templates/' );	
 		$this->setCompileDir( './externals/smarty/templates_c/' );	
 		$this->setCacheDir( './externals/smarty/cache/' );	
 		$this->setConfigDir( './externals/smarty/configs/' );	
 
-		$this->assign( 'app_name' , 'emporium' );
+		$this->assign( 'title' , 'Emporium' );
 	}
 }

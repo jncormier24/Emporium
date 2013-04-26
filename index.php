@@ -1,35 +1,57 @@
 <?php
-require( 'includes/autoload.php' );
-startSession();
+	require( 'includes/autoload.php' );
+	
+	respond( function($request, $resonse, $app){
+		session_start();
+		$app->tpl = new EMPSmarty();
+		
+		$GLOBALS['BASE_DIR'] = dirname(__FILE__);
+		$GLOBALS['BASE_URL'] = '/~jncormier/git-checkout/marketplace';
+		
+		$GLOBALS['TITLE'] = 'Emporium';
+		$GLOBALS['TEMPLATES'] = $GLOBALS['BASE_DIR'].'/templates';
+		
+		$app->tpl->assign( 'base_url', $GLOBALS['BASE_URL'] );
+	});
 
-$GLOBALS['BASE_URL'] = '/emporium';
-$GLOBALS['BASE_DIR'] = dirname(__FILE__);
+	respond( '/', function($request, $response, $app){
+		$app->tpl->display( 'index.tpl' );
+	});
 
-$GLOBALS['TITLE'] = 'Emporium';
-$GLOBALS['TEMPLATES'] = $GLOBALS['BASE_DIR'] . '/templates';
-
-$smarty = new EMPSmarty();
-$smarty->assign( 'name', 'Joe' );
-$smarty->display('index.tpl');
-
-/**
- * Routing provided by klein.php (https://github.com/chriso/klein.php)
-respond( function( $request, $response, $app ){
-	$app->tpl = new EMPSmarty();
-});
-
-respond( '/?', function( $request, $response, $app ){ 
-	$app->tpl->display( 'index.tpl' );
-});
-
-$app_routes = array(
-	'login'
-);
-
-foreach( $app_routes as $base ){
-	with( "/{$base}", $GLOBALS['BASE_DIR'] . "/routes/{$base}.php" );
-}
- **/
-dispatch($_SERVER['PATH_INFO']);
-
-
+	respond( '/home', function($request, $response, $app){
+		die( var_dump( $_SESSION ) );
+		if( $_SESSION['person'] ){
+			$app->tpl->assign( 'person', $_SESSION['person'] );
+			$app->tpl->display( 'home.tpl' );
+		}
+		else{
+			$response->redirect( $GLOBALS['BASE_URL'] );
+		}
+	});
+	
+	respond( 'GET', '/classifieds/?', function($request, $response, $app){
+		$listings = EMP::search_postings( $_GET['type'] , $_GET['search'] );
+		$app->tpl->assign( 'listings', $listings );
+		$app->tpl->display( 'classifieds.tpl' );	
+	});
+	
+	respond( 'GET', '/classified/[:id]', function( $request, $resonse, $app ){
+		$id = $request->param( 'id' );
+		$item = EMP::get_posting( $id );
+		$app->tpl->assign( 'item', $item );
+		$app->tpl->display( 'classified.tpl' );
+	});
+	
+	$routes = array(
+		'registration',
+		'login',
+		'new_item'
+		//'classifieds',
+		//'posts',
+		//'new_post'
+	);
+	
+	foreach( $routes as $base ){
+		with( "/{$base}", $GLOBALS['BASE_DIR']."routes/{$base}.php");
+	} 
+	dispatch( $_SERVER['PATH_INFO'] );	
