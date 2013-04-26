@@ -11,6 +11,8 @@
 		$GLOBALS['TITLE'] = 'Emporium';
 		$GLOBALS['TEMPLATES'] = $GLOBALS['BASE_DIR'].'/templates';
 		
+		$GLOBALS['uploads'] = '/home/PLYMOUTH/jncormier/Home/git-checkout/emporium/users';
+		
 		$app->tpl->assign( 'base_url', $GLOBALS['BASE_URL'] );
 	});
 
@@ -37,7 +39,10 @@
 	respond( 'GET', '/classified/[:id]', function( $request, $resonse, $app ){
 		$id = $request->param( 'id' );
 		$item = EMP::get_posting( $id );
+		$pictures = json_decode( $item[0]['pics'] );
+		$app->tpl->assign( 'u_id', $_SESSION['person'][0]['u_id'] );
 		$app->tpl->assign( 'item', $item );
+		$app->tpl->assign( 'pics', $pictures );
 		$app->tpl->display( 'classified.tpl' );
 	});
 	

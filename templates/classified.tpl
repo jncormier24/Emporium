@@ -4,7 +4,9 @@
 		{foreach from=$item key=k item=v}
 			<legend>{$v['title']}</legend>
 			<p>{$v['text']}</p>
-			pictures
+			{foreach from=$pics item=pic}
+				<img src="{$base_url}/users/{$u_id}/{$pic}" >
+			{/foreach}
 		{/foreach}
 	</div>
 </div>

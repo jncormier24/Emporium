@@ -51,10 +51,11 @@ class EMP{
 	 * parameters: u_id, URI, text
 	 * returns: list_id
 	 * **/
-	function add_posting( $u_id, $type_id, $URI = null, $text, $title ){
+	function add_posting( $u_id, $type_id, $text, $title, $URI = null ){
 		$db = dblogin::dbconnect();
-		$sql = "INSERT INTO Listings (u_id, ,type_id, URI, text, title)
+		$sql = "INSERT INTO Listings (u_id, type_id, pics, text, title)
 				VALUES ('$u_id', '$type_id', '$URI', '$text', '$title')";
+		new dbug( $sql );
 		$rows = $db->Execute( $sql );
 		if( $rows ){
 			return true;
@@ -144,5 +145,25 @@ class EMP{
 		$rows = $db->Execute( $sql );
 		$return = $rows->GetRows();
 		return $return;
+	}
+	function upload( $files ){
+		$locals = Array();
+		foreach ($files["pictures"]["error"] as $key => $error) {
+			if ($error == UPLOAD_ERR_OK) {
+				$tmp_name = $files["pictures"]["tmp_name"][$key];
+				$name = $files["pictures"]["name"][$key];
+				$user_dir = $GLOBALS['uploads'].'/'.$_SESSION['person'][0]['u_id'];
+				if( !file_exists( $user_dir ) ){
+					mkdir( $user_dir );
+				}
+				if( move_uploaded_file($tmp_name, $user_dir."/".$name) ){
+					$locals[$name] = $name;
+				}
+				else{
+					return false;
+				}
+			}
+		}
+		return $locals;
 	}
 }

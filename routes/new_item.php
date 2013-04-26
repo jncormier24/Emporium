@@ -3,30 +3,59 @@
 		$app->tpl->display( 'new_item.tpl' );
 	});
 	
-	respond( 'POST', '/create_item/', function( $request, $resonse, $app ){
+	respond( 'POST', '/create_item/', function( $request, $response, $app ){
 		//$u_id, $type_id, $text, $title
-		echo $_POST['title'].", ".$_POST['text'].", ".$_POST['type'].", ";
-		echo $_SESSION['person'][0]['u_id'];
+		$title = $_POST['title'];
+		$text = $_POST['text'];
+		$type = $_POST['type'];
+		$type_id = 0;
+		switch ($type){
+			case 'furniture':
+				$type_id = 1;
+				break;
+			case 'books':
+				$type_id = 2;
+				break;
+			case 'appliances':
+				$type_id = 3;
+				break;
+			case 'electronics':
+				$type_id = 4;
+				break;
+			case 'wanted':
+				$type_id = 5;
+				break;
+		}
+		$u_id = $_SESSION['person'][0]['u_id'];
+		$locals = array();
 		foreach ($_FILES["pictures"]["error"] as $key => $error) {
 			if ($error == UPLOAD_ERR_OK) {
 				$tmp_name = $_FILES["pictures"]["tmp_name"][$key];
 				$name = $_FILES["pictures"]["name"][$key];
-				$user_dir = $GLOBALS['BASE_URL']."/users/".$_SESSION['person'][0]['u_id'];
-				if( is_dir( $user_dir ) ){
-					if( !move_uploaded_file($tmp_name, $user_dir."/".$name) ){
-						die("upload failed.");
-					}
-					echo "Posted.";
+				$user_dir = $GLOBALS['uploads'].'/'.$_SESSION['person'][0]['u_id'];
+				if( !file_exists( $user_dir ) ){
+					mkdir( $user_dir );
+				}
+				if( move_uploaded_file($tmp_name, $user_dir."/".$name) ){
+					$locals[count($locals)] = $name;
 				}
 				else{
-					if( exec( "mkdir $user_dir" ) ){
-						move_uploaded_file($tmp_name, $user_dir."/".$name);
-						echo "Posted.";
-					}
-					else{
-						die('upload failed');
-					}	
-				}	
+					die('issues..');
+				}
+			}
+		}
+		//new dbug( $locals );
+		$locals = json_encode($locals);
+		//die( var_dump($locals) );
+		/*$locals = EMP::upload( $_FILES['pictures'] );*/
+		if( $locals ){
+			$URI = $locals;
+			$upload = EMP::add_posting( $u_id, $type_id, $text, $title, $URI );
+			if( $upload ){
+				$response->redirect( $GLOBALS['BASE_URL'].'/home');
+			}
+			else{
+				die( 'Something bad happened.' );
 			}
 		}
 	});
