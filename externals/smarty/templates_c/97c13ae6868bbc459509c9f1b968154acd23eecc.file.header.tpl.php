@@ -1,38 +1,38 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-04-26 09:12:32
+<?php /* Smarty version Smarty-3.1.13, created on 2013-04-26 12:58:43
          compiled from "./templates/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2640057825109b76b5bf442-02779592%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:234029118517ab243d19c67-58564441%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '97c13ae6868bbc459509c9f1b968154acd23eecc' => 
     array (
       0 => './templates/header.tpl',
-      1 => 1366856129,
+      1 => 1366995061,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2640057825109b76b5bf442-02779592',
+  'nocache_hash' => '234029118517ab243d19c67-58564441',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5109b76b5c12b2_19304097',
   'variables' => 
   array (
     'base_url' => 0,
     'title' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_517ab243d3ee21_47014415',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5109b76b5c12b2_19304097')) {function content_5109b76b5c12b2_19304097($_smarty_tpl) {?><!doctype html>
+<?php if ($_valid && !is_callable('content_517ab243d3ee21_47014415')) {function content_517ab243d3ee21_47014415($_smarty_tpl) {?><!doctype html>
 <html>
 	<head>
 		<meta name="siteHeader"/>
-		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" type="text/css" />
 		<link href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-/externals/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+/externals/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
 		<link href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-/includes/css/style.css" rel="stylesheet" media="screen">
+/includes/css/style.css" rel="stylesheet" type="text/css" media="screen">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 		<script src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>

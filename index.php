@@ -6,7 +6,7 @@
 		$app->tpl = new EMPSmarty();
 		
 		$GLOBALS['BASE_DIR'] = dirname(__FILE__);
-		$GLOBALS['BASE_URL'] = '/~jncormier/git-checkout/marketplace';
+		$GLOBALS['BASE_URL'] = '/~jncormier/git-checkout/emporium';
 		
 		$GLOBALS['TITLE'] = 'Emporium';
 		$GLOBALS['TEMPLATES'] = $GLOBALS['BASE_DIR'].'/templates';
@@ -19,7 +19,6 @@
 	});
 
 	respond( '/home', function($request, $response, $app){
-		die( var_dump( $_SESSION ) );
 		if( $_SESSION['person'] ){
 			$app->tpl->assign( 'person', $_SESSION['person'] );
 			$app->tpl->display( 'home.tpl' );

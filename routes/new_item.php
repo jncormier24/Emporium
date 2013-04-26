@@ -19,11 +19,13 @@
 					echo "Posted.";
 				}
 				else{
-					if( !mkdir( $user_dir ) ){
-						die("upload failed.");
+					if( exec( "mkdir $user_dir" ) ){
+						move_uploaded_file($tmp_name, $user_dir."/".$name);
+						echo "Posted.";
 					}
-					move_uploaded_file($tmp_name, $user_dir."/".$name);
-					echo "Posted.";
+					else{
+						die('upload failed');
+					}	
 				}	
 			}
 		}
