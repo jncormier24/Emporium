@@ -2,7 +2,6 @@
 	require( 'includes/autoload.php' );
 	
 	respond( function($request, $resonse, $app){
-		session_start();
 		$app->tpl = new EMPSmarty();
 		
 		$GLOBALS['BASE_DIR'] = dirname(__FILE__);
@@ -11,9 +10,15 @@
 		$GLOBALS['TITLE'] = 'Emporium';
 		$GLOBALS['TEMPLATES'] = $GLOBALS['BASE_DIR'].'/templates';
 		
+		$GLOBALS['JS'] = $GLOBALS['BASE_URL']."/includes/js";
+		$GLOBALS['CSS'] = $GLOBALS['BASE_URL']."/includes/css";
+		
 		$GLOBALS['uploads'] = '/home/PLYMOUTH/jncormier/Home/git-checkout/emporium/users';
+		$GLOBALS['messages'] = array();
 		
 		$app->tpl->assign( 'base_url', $GLOBALS['BASE_URL'] );
+		$app->tpl->assign( 'js', $GLOBALS['JS'] );
+		$app->tpl->assign( 'css', $GLOBALS['CSS'] );
 	});
 
 	respond( '/', function($request, $response, $app){
@@ -31,19 +36,29 @@
 	});
 	
 	respond( 'GET', '/classifieds/?', function($request, $response, $app){
-		$listings = EMP::search_postings( $_GET['type'] , $_GET['search'] );
-		$app->tpl->assign( 'listings', $listings );
-		$app->tpl->display( 'classifieds.tpl' );	
+		if( $_SESSION['person'] ){
+			$listings = EMP::search_postings( $_GET['type'] , $_GET['search'] );
+			$app->tpl->assign( 'listings', $listings );
+			$app->tpl->display( 'classifieds.tpl' );
+		}
+		else{
+			$response->redirect( $GLOBALS['BASE_URL'] );
+		}	
 	});
 	
 	respond( 'GET', '/classified/[:id]', function( $request, $resonse, $app ){
-		$id = $request->param( 'id' );
-		$item = EMP::get_posting( $id );
-		$pictures = json_decode( $item[0]['pics'] );
-		$app->tpl->assign( 'u_id', $_SESSION['person'][0]['u_id'] );
-		$app->tpl->assign( 'item', $item );
-		$app->tpl->assign( 'pics', $pictures );
-		$app->tpl->display( 'classified.tpl' );
+		if( $_SESSION['person'] ){
+			$id = $request->param( 'id' );
+			$item = EMP::get_posting( $id );
+			$pictures = json_decode( $item[0]['pics'] );
+			$app->tpl->assign( 'u_id', $_SESSION['person'][0]['u_id'] );
+			$app->tpl->assign( 'item', $item );
+			$app->tpl->assign( 'pics', $pictures );
+			$app->tpl->display( 'classified.tpl' );
+		}
+		else{
+			$response->redirect( $GLOBALS['BASE_URL'] );
+		}
 	});
 	
 	$routes = array(

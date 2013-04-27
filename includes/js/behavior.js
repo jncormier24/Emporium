@@ -17,48 +17,27 @@ $(function () {
 	$( '#datepicker' ).datepicker();		
 })
 
-$(function () {
-	'use strict';
-
-    $('#fileupload').fileupload({
-        dataType: 'json',
-        url: 'server/php/',
-        add: function (e, data) {
-            data.context = $('<button/>').text('Upload')
-                .appendTo(document.body)
-                .click(function () {
-                    data.context = $('<p/>').text('Uploading...').replaceAll($(this));
-                    data.submit();
-                });
-        },
-        done: function (e, data) {
-            data.context.text('Upload finished.');
-        }
-        progressall: function (e, data) {
-        var progress = parseInt(data.loaded / data.total * 100, 10);
-	        $('#progress .bar').css(
-	            'width',
-	            progress + '%'
-	        );
-        }
-    });
-    $('#fileupload').fileupload('option', {
-            maxFileSize: 5000000,
-            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-            process: [
-                {
-                    action: 'load',
-                    fileTypes: /^image\/(gif|jpeg|png)$/,
-                    maxFileSize: 20000000 // 20MB
-                },
-                {
-                    action: 'resize',
-                    maxWidth: 1440,
-                    maxHeight: 900
-                },
-                {
-                    action: 'save'
-                }
-            ]
-        });
-});
+/*$(function (){
+	$( '#register' ).validate({
+		rules: {
+			inputEmail: {
+				required: true,
+				email: true
+			},
+			inputPassword: {
+				required: true,
+				minlength: 8
+			}	
+			retypePassword: {
+				required: true,
+				minlength: 8,
+				equalto: #inputPassword
+			}
+		},
+		messages: {
+			inputEmail: "Please Enter a valid email.",
+			inputPassword: "Please enter a valid email, between 8 and 15 characters.",
+			retypePassword: "The passwords you have typed do not match."
+		}
+	});
+});*/
