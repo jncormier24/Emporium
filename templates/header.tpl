@@ -14,13 +14,24 @@
 			<div class="navbar-inner">
 				<div class="container">
 					<a class="brand" href="{$base_url}/home">{$title}</a>
-					<a href="logout">Logout</a>
-					<div class="nav-search pull-right">
-						<form method="get" action="classifieds/">
-							<input type="text" class="span2" name="search">
-							<button type="submit" class="btn">Submit</button>
-						</form>
-					</div>
+					<ul class="nav">
+				    	<li><a href="logout">Logout</a></li>
+					</ul>	
+					<form method="get" action="classifieds/">
+						<div class="input-prepend pull-right">
+							<div class="btn-group">
+								<select class="span2" name="type">
+									<option value="books">Books</option>
+									<option value="furniture">Furniture</option>
+									<option value="appliances">Appliances</option>
+									<option value="electronics">Electronics</option>
+									<option value="wanted">Wanted</option>
+								</select>
+							</div>
+							<input class="span3" id="appenededPrependedDropdownButton" type="text" name="search">
+							<button class="btn" type="submit">Search</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

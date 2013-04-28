@@ -170,7 +170,7 @@ class EMP{
 		$sql = "SELECT *
 				FROM Listings
 				WHERE type_id = '$cat'
-				AND title LIKE '%$params%'
+				OR title LIKE '%$params%'
 				OR text = '% $params %'";
 		$rows = $db->Execute( $sql );
 		$return = $rows->GetRows();
