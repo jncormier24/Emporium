@@ -34,7 +34,7 @@
 				$name = $_FILES["pictures"]["name"][$key];
 				$user_dir = $GLOBALS['uploads'].'/'.$_SESSION['person'][0]['u_id'];
 				if( !file_exists( $user_dir ) ){
-					mkdir( $user_dir );
+					exec( "mkdir $user_dir ");
 				}
 				if( move_uploaded_file($tmp_name, $user_dir."/".$name) ){
 					$locals[count($locals)] = $name;

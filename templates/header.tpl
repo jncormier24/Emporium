@@ -14,8 +14,12 @@
 			<div class="navbar-inner">
 				<div class="container">
 					<a class="brand" href="{$base_url}/home">{$title}</a>
-					<dif class="pull-right">
-						<a href="logout">Logout</a>
+					<a href="logout">Logout</a>
+					<div class="nav-search pull-right">
+						<form method="get" action="classifieds/">
+							<input type="text" class="span2" name="search">
+							<button type="submit" class="btn">Submit</button>
+						</form>
 					</div>
 				</div>
 			</div>
