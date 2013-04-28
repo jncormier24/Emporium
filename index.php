@@ -66,6 +66,12 @@
 		}
 	});
 	
+	respond( 'GET', '/logout', function( $request, $response, $app ){
+		session_destroy();
+		unset( $_SESSION );
+		$response->redirect( $GLOBALS['BASE_URL'] );
+	});
+	
 	$routes = array(
 		'registration',
 		'login',

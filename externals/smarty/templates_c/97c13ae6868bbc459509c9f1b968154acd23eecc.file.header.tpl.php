@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-04-27 21:06:27
+<?php /* Smarty version Smarty-3.1.13, created on 2013-04-27 22:04:50
          compiled from "./templates/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:234029118517ab243d19c67-58564441%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97c13ae6868bbc459509c9f1b968154acd23eecc' => 
     array (
       0 => './templates/header.tpl',
-      1 => 1367013345,
+      1 => 1367114688,
       2 => 'file',
     ),
   ),
@@ -46,9 +46,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<a class="brand" href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 /home"><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </a>
-					<form class="navbar-search pull-right" method="get" action="classifieds.php">
-						
-					</form>
+					<dif class="pull-right">
+						<a href="logout">Logout</a>
+					</div>
 				</div>
 			</div>
 		</div>

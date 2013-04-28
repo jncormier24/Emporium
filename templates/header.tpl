@@ -14,9 +14,9 @@
 			<div class="navbar-inner">
 				<div class="container">
 					<a class="brand" href="{$base_url}/home">{$title}</a>
-					<form class="navbar-search pull-right" method="get" action="classifieds.php">
-						{*include file="search.tpl"*}
-					</form>
+					<dif class="pull-right">
+						<a href="logout">Logout</a>
+					</div>
 				</div>
 			</div>
 		</div>
