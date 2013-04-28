@@ -40,7 +40,7 @@ class EMP{
 			$sql = "INSERT INTO Users (email, password)
 							VALUES ('$email','$password')";
 			$rows = $db->Execute( $sql );
-			return EMP::find_user( $email, $password );
+			return EMP::login( $email, $password );
 		}
 		else{
 			return null;
