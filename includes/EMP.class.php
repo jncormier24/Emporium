@@ -14,11 +14,11 @@ require_once( 'dblogin.php' );
 
 class EMP{
 	/**
-	 * find_user
+	 * login
 	 * parameters: email, password
 	 * returns: u_id
 	 * **/
-	function find_user( $email, $password ){
+	function login( $email, $password ){
 		$db = dblogin::dbconnect();
 		$sql = "SELECT u_id, email
 				FROM Users
@@ -47,6 +47,20 @@ class EMP{
 		}
 	}
 	/**
+	 * find_user
+	 * parameters: u_id
+	 * returns: email
+	 * **/
+	function find_user( $u_id ){
+		$db = dblogin::dbconnect();
+		$sql = "SELECT email
+				FROM Users
+				WHERE u_id = '$u_id'";
+		$rows = $db->Execute( $sql );
+		$return = $rows->GetRows();
+		return $return;
+	}
+	/**
 	 * add_posting
 	 * parameters: u_id, URI, text
 	 * returns: list_id
@@ -55,7 +69,6 @@ class EMP{
 		$db = dblogin::dbconnect();
 		$sql = "INSERT INTO Listings (u_id, type_id, pics, text, title)
 				VALUES ('$u_id', '$type_id', '$URI', '$text', '$title')";
-		new dbug( $sql );
 		$rows = $db->Execute( $sql );
 		if( $rows ){
 			return true;
@@ -92,6 +105,23 @@ class EMP{
 		$sql = "SELECT * 
 				FROM Listings
 				WHERE type_id = '$cat'";
+				
+		$rows = $db->Execute( $sql );
+		$return = $rows->GetRows();
+		
+		return $return;
+	}
+	/**
+	 * get_user_listings
+	 * parameters: u_id
+	 * returns: array of postings
+	 * **/
+	function get_user_listings( $u_id ){
+		$db = dblogin::dbconnect();
+		
+		$sql = "SELECT * 
+				FROM Listings
+				WHERE u_id = '$u_id'";
 				
 		$rows = $db->Execute( $sql );
 		$return = $rows->GetRows();

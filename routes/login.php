@@ -1,9 +1,8 @@
 <?php
 respond('/', function( $request, $response, $app){
 	if( isset($_POST['email']) && isset($_POST['password']) ){
-		$person = EMP::find_user( $_POST['email'], $_POST['password'] );
+		$person = EMP::login( $_POST['email'], md5($_POST['password']) );
 		if( $person ){
-			session_start();
 			$_SESSION['person'] = $person;
 			$app->tpl->assign( 'person', $person );
 			$response->redirect( $GLOBALS['BASE_URL'].'/home');

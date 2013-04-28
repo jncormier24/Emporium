@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-04-26 15:26:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-04-27 21:58:45
          compiled from "./templates/classified.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1943472876517accdf1632d4-06018406%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7cefdabc0e4de2a5815441f4c1b70e08215b4899' => 
     array (
       0 => './templates/classified.tpl',
-      1 => 1367004387,
+      1 => 1367114322,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'item' => 0,
     'v' => 0,
+    'user' => 0,
     'pics' => 0,
     'base_url' => 0,
     'u_id' => 0,
@@ -40,6 +41,7 @@ $_smarty_tpl->tpl_vars['v']->_loop = true;
  $_smarty_tpl->tpl_vars['k']->value = $_smarty_tpl->tpl_vars['v']->key;
 ?>
 			<legend><?php echo $_smarty_tpl->tpl_vars['v']->value['title'];?>
+, posted by <?php echo $_smarty_tpl->tpl_vars['user']->value;?>
 </legend>
 			<p><?php echo $_smarty_tpl->tpl_vars['v']->value['text'];?>
 </p>

@@ -6,7 +6,7 @@
 	respond( '/register', function( $request, $response, $app ){
 		if( isset($_POST['email']) && isset($_POST['password']) && isset($_POST['repassword'] ) ){
 			if( $_POST['password'] == $_POST['repassword']){
-				$person = EMP::add_user( $_POST['email'], $_POST['password'] );
+				$person = EMP::add_user( $_POST['email'], md5($_POST['password']) );
 				if( $person ){
 					$_SESSION[ 'person' ] = $person;
 					$response->redirect( $GLOBALS['BASE_URL'].'/home');

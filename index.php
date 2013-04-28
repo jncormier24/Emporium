@@ -2,6 +2,7 @@
 	require( 'includes/autoload.php' );
 	
 	respond( function($request, $resonse, $app){
+		session_start();
 		$app->tpl = new EMPSmarty();
 		
 		$GLOBALS['BASE_DIR'] = dirname(__FILE__);
@@ -27,6 +28,8 @@
 
 	respond( '/home', function($request, $response, $app){
 		if( $_SESSION['person'] ){
+			$user_stuff = EMP::get_user_listings( $_SESSION['person'][0]['u_id'] );
+			$app->tpl->assign( 'listings', $user_stuff );
 			$app->tpl->assign( 'person', $_SESSION['person'] );
 			$app->tpl->display( 'home.tpl' );
 		}
@@ -50,8 +53,10 @@
 		if( $_SESSION['person'] ){
 			$id = $request->param( 'id' );
 			$item = EMP::get_posting( $id );
+			$user = EMP::find_user( $item[0]['u_id'] );
 			$pictures = json_decode( $item[0]['pics'] );
-			$app->tpl->assign( 'u_id', $_SESSION['person'][0]['u_id'] );
+			$app->tpl->assign( 'u_id', $item[0]['u_id'] );
+			$app->tpl->assign( 'user', $user[0]['email'] );
 			$app->tpl->assign( 'item', $item );
 			$app->tpl->assign( 'pics', $pictures );
 			$app->tpl->display( 'classified.tpl' );
