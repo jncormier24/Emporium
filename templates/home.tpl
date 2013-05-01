@@ -9,7 +9,15 @@
 			<tbody id="listings_TB">
 				{foreach from=$listings item=listing}
 					<tr>
-						<td><a href="{$base_url}/classified/{$listing['list_id']}">{$listing['title']}</a></td>
+						<form method="GET" action="delete">
+							<td>
+								<a href="{$base_url}/classified/{$listing['list_id']}" >{$listing['title']}</a>
+							</td>
+							<td>
+								<button class="btn btn-danger pull-right" type="submit">Delete</button>
+							</td>
+							<input type="hidden" name="post_id" value="{$listing['list_id']}" />
+						</form>
 					</tr>
 				{/foreach}
 			</tbody>

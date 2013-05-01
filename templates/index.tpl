@@ -26,7 +26,7 @@
 						    	<a href="{$base_url}/registration/">Register</a>
 						    </div>
 						    <div class="controls">
-							    <a href="{$base_url}/password">Forgot Password</a>
+							    <a href="{$base_url}/recover/">Forgot Password</a>
 						    </div>
 							<div class="control-group">
 						    	<div class="controls">

@@ -29,6 +29,28 @@
 						    </div>
 						</div>
 						<div class="control-group">
+							<label class="control-label" for="question">Security Question</label>
+							<div class="controls">
+								<select name="question">
+									<option value="1">What is your mother's maiden name?</option>
+									<option value="2">What was the make of your first car?</option>
+									<option value="3">What is the name of your favorite teacher?</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group">
+					    	<label class="control-label" for="inputAnswer">Answer</label>
+					    	<div class="controls">
+						    	<input type="password" id="inputAnswer" placeholder="Answer" name="answer">					
+						    </div>
+						</div>
+						<div class="control-group">
+					    	<label class="control-label" for="inputPassword">Re-type Answer</label>
+					    	<div class="controls">
+						    	<input type="password" id="retypeAnswer" placeholder="Answer" name="reanswer">
+						    </div>
+						</div>
+						<div class="control-group">
 					    	<div class="controls">
 					        	<button type="submit" class="btn">Sign Up</button>
 					        </div>

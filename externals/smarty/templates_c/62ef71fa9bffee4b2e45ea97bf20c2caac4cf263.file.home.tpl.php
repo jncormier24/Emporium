@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-04-28 17:01:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-04-29 10:14:10
          compiled from "./templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1074640096517ab243ceee11-69763101%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1367182792,
+      1 => 1367244847,
       2 => 'file',
     ),
   ),
@@ -43,10 +43,19 @@ foreach ($_from as $_smarty_tpl->tpl_vars['listing']->key => $_smarty_tpl->tpl_v
 $_smarty_tpl->tpl_vars['listing']->_loop = true;
 ?>
 					<tr>
-						<td><a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+						<form method="GET" action="delete">
+							<td>
+								<a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 /classified/<?php echo $_smarty_tpl->tpl_vars['listing']->value['list_id'];?>
-"><?php echo $_smarty_tpl->tpl_vars['listing']->value['title'];?>
-</a></td>
+" ><?php echo $_smarty_tpl->tpl_vars['listing']->value['title'];?>
+</a>
+							</td>
+							<td>
+								<button class="btn btn-danger pull-right" type="submit">Delete</button>
+							</td>
+							<input type="hidden" name="post_id" value="<?php echo $_smarty_tpl->tpl_vars['listing']->value['list_id'];?>
+" />
+						</form>
 					</tr>
 				<?php } ?>
 			</tbody>

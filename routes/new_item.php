@@ -59,3 +59,16 @@
 			}
 		}
 	});
+	
+	respond('POST', '/update_posting/', function( $request, $response, $app ){
+		$list_id = $_POST['list_id'];
+		$type_id = $_POST['type'];
+		$text = $_POST['text'];
+		$update = EMP::update_posting( $list_id, $type_id, $text );
+		if( $upload ){
+			$response->redirect( $GLOBALS['BASE_URL'].'/home');
+		}
+		else{
+			die( 'Something bad happened.' );
+		}
+	});

@@ -27,25 +27,25 @@ class EMP{
 		$rows = $db->Execute( $sql );
 		$return = $rows->GetRows();
 		return $return;
-	}
+	}//end login
 	/**
 	 * add_user
 	 * parameters: email, password
 	 * returns: u_id
 	 * **/
-	function add_user( $email, $password ){
+	function add_user( $email, $password, $question, $answer ){
 		$user = EMP::find_user( $email, $password );
 		if( null == $user ){
 			$db = dblogin::dbconnect();
-			$sql = "INSERT INTO Users (email, password)
-							VALUES ('$email','$password')";
+			$sql = "INSERT INTO Users (email, password, question, answer)
+							VALUES ('$email','$password', '$question', '$answer')";
 			$rows = $db->Execute( $sql );
 			return EMP::login( $email, $password );
 		}
 		else{
 			return null;
 		}
-	}
+	}//end add_user
 	/**
 	 * find_user
 	 * parameters: u_id
@@ -59,7 +59,41 @@ class EMP{
 		$rows = $db->Execute( $sql );
 		$return = $rows->GetRows();
 		return $return;
-	}
+	}//end find_user
+	/**
+	 * verify_user
+	 * parameters: question, answer
+	 * returns: u_id
+	 * **/
+	 function verify_user( $email, $question, $answer ){
+		 $db = dblogin::dbconnect();
+		 $sql = "SELECT u_id
+		 		 FROM Users
+		 		 WHERE email = '$email'
+		 		 AND question = '$question'
+		 		 AND answer = '$answer'";
+		 $rows = $db->Execute( $sql );
+		 $return = $rows->GetRows();
+		 return $return;
+	 }//end verify user
+	 /**
+	 * reset_password
+	 * parameters: email, password
+	 * returns: true
+	 * **/
+	 function reset_password( $email, $password ){
+		 $db = dblogin::dbconnect();
+		 $sql = "UPDATE Users
+		 		 SET password = '$password'
+		 		 WHERE email = '$email'";
+		 $rows = $db->Execute( $sql );
+		 if( $rows ){
+			 return true;
+		 }
+		 else{
+			 return false;
+		 }
+	 }
 	/**
 	 * add_posting
 	 * parameters: u_id, URI, text
@@ -76,7 +110,43 @@ class EMP{
 		else{
 			return false;
 		}
-	}
+	}//end add_posting
+	/**
+	 * update_posting
+	 * parameters: list_id title, text
+	 * returns true 
+	 * **/
+	function update_posting( $list_id, $type, $text ){
+		$db = dblogin::dbconnect();
+		switch ($type){
+			case 'furniture':
+				$cat = 1;
+				break;
+			case 'books':
+				$cat = 2;
+				break;
+			case 'appliances':
+				$cat = 3;
+				break;
+			case 'electronics':
+				$cat = 4;
+				break;
+			case 'wanted':
+				$cat = 5;
+				break;
+		}
+		$sql = "UPDATE Listings
+				SET type_id = $cat, description = '$text'
+				WHERE list_id = $list_id";
+		$rows = $db->Execute( $sql );
+		die( var_dump( $rows ) );
+		if( $rows ){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}//update_posting
 	/**
 	 * list_postings
 	 * parameters: type
@@ -104,13 +174,14 @@ class EMP{
 		}
 		$sql = "SELECT * 
 				FROM Listings
-				WHERE type_id = '$cat'";
+				WHERE type_id = '$cat'
+				AND delete= 'null'";
 				
 		$rows = $db->Execute( $sql );
 		$return = $rows->GetRows();
 		
 		return $return;
-	}
+	}//end list_postings
 	/**
 	 * get_user_listings
 	 * parameters: u_id
@@ -121,13 +192,14 @@ class EMP{
 		
 		$sql = "SELECT * 
 				FROM Listings
-				WHERE u_id = '$u_id'";
+				WHERE u_id = '$u_id'
+				AND deleted = 0";
 				
 		$rows = $db->Execute( $sql );
 		$return = $rows->GetRows();
 		
 		return $return;
-	}
+	}//end get_user_listings
 	/**
 	 * get_posting
 	 * parameters: $list_id
@@ -137,11 +209,12 @@ class EMP{
 		$db = dblogin::dbconnect();
 		$sql = "SELECT * 
 				FROM Listings
-				WHERE list_id = '$list_id'";
+				WHERE list_id = '$list_id'
+				AND deleted = 0";
 		$rows = $db->Execute( $sql );
 		$return = $rows->GetRows();
 		return $return;
-	}
+	}//end get_postings
 	/**
 	 * search_postings
 	 * parameters: type, params
@@ -167,15 +240,44 @@ class EMP{
 				break;
 		}
 		
-		$sql = "SELECT *
+		$sql1 = "SELECT *
 				FROM Listings
 				WHERE type_id = '$cat'
-				OR title LIKE '%$params%'
-				OR text = '% $params %'";
+				AND deleted = 0";
+				
+		$sql2 = "SELECT * 
+				 FROM Listings
+				 WHERE deleted = 0
+				 AND title LIKE '%$params%'
+				 OR text LIKE '%$params%'";
+		
+		$sql = "$sql1 UNION $sql2";
 		$rows = $db->Execute( $sql );
 		$return = $rows->GetRows();
 		return $return;
-	}
+	}//end search_postings
+	/**
+	 * delete_posting
+	 * parameters: post_id
+	 * returns: boolean
+	 * **/
+	function delete_posting( $post_id ){
+		$db = dblogin::dbconnect();
+		$sql = "UPDATE Listings
+				SET deleted = 1
+				WHERE list_id = '$post_id'";
+		if( $rows = $db->Execute( $sql ) ){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}//end delete_posting
+	/**
+	 * upload
+	 * parameters: files
+	 * returns: array of uploaded file urls
+	 * **/
 	function upload( $files ){
 		$locals = Array();
 		foreach ($files["pictures"]["error"] as $key => $error) {
@@ -195,5 +297,5 @@ class EMP{
 			}
 		}
 		return $locals;
-	}
+	}//end upload
 }

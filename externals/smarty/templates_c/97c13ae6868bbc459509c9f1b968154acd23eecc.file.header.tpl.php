@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-04-28 17:30:09
+<?php /* Smarty version Smarty-3.1.13, created on 2013-04-28 22:20:28
          compiled from "./templates/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:234029118517ab243d19c67-58564441%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97c13ae6868bbc459509c9f1b968154acd23eecc' => 
     array (
       0 => './templates/header.tpl',
-      1 => 1367184603,
+      1 => 1367196889,
       2 => 'file',
     ),
   ),
@@ -49,7 +49,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<ul class="nav">
 				    	<li><a href="logout">Logout</a></li>
 					</ul>	
-					<form method="get" action="classifieds/">
+					<!--form method="get" action="classifieds/">
 						<div class="input-prepend pull-right">
 							<div class="btn-group">
 								<select class="span2" name="type">
@@ -63,7 +63,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<input class="span3" id="appenededPrependedDropdownButton" type="text" name="search">
 							<button class="btn" type="submit">Search</button>
 						</div>
-					</form>
+					</form-->
 				</div>
 			</div>
 		</div>

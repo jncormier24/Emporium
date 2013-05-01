@@ -55,15 +55,28 @@
 			$item = EMP::get_posting( $id );
 			$user = EMP::find_user( $item[0]['u_id'] );
 			$pictures = json_decode( $item[0]['pics'] );
+			$app->tpl->assign( 'person', $_SESSION['person'] );
 			$app->tpl->assign( 'u_id', $item[0]['u_id'] );
 			$app->tpl->assign( 'user', $user[0]['email'] );
 			$app->tpl->assign( 'item', $item );
 			$app->tpl->assign( 'pics', $pictures );
+			$app->tpl->assign( 'list_id', $id );
 			$app->tpl->display( 'classified.tpl' );
 		}
 		else{
 			$response->redirect( $GLOBALS['BASE_URL'] );
 		}
+	});
+	
+	respond( 'GET', '/delete/?', function( $request, $response, $app ){
+		if( $_SESSION['person'] ){
+			$item = $_GET['post_id'];
+			EMP::delete_posting( $item );
+			$response->redirect( 'home' );
+		}
+		else{
+			$response->redirect( $GLOBALS['BASE_URL'] );
+		}	
 	});
 	
 	respond( 'GET', '/logout', function( $request, $response, $app ){
@@ -75,7 +88,8 @@
 	$routes = array(
 		'registration',
 		'login',
-		'new_item'
+		'new_item',
+		'recover'
 		//'classifieds',
 		//'posts',
 		//'new_post'

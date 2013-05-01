@@ -17,7 +17,7 @@
 					<ul class="nav">
 				    	<li><a href="logout">Logout</a></li>
 					</ul>	
-					<form method="get" action="classifieds/">
+					<!--form method="get" action="classifieds/">
 						<div class="input-prepend pull-right">
 							<div class="btn-group">
 								<select class="span2" name="type">
@@ -31,7 +31,7 @@
 							<input class="span3" id="appenededPrependedDropdownButton" type="text" name="search">
 							<button class="btn" type="submit">Search</button>
 						</div>
-					</form>
+					</form-->
 				</div>
 			</div>
 		</div>

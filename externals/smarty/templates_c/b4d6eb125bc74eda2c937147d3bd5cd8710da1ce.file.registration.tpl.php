@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-04-27 17:09:27
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-01 13:47:09
          compiled from "./templates/registration.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1870059316517ae2d1bb3979-52887742%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b4d6eb125bc74eda2c937147d3bd5cd8710da1ce' => 
     array (
       0 => './templates/registration.tpl',
-      1 => 1367096964,
+      1 => 1367430425,
       2 => 'file',
     ),
   ),
@@ -55,6 +55,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					    	<label class="control-label" for="inputPassword">Re-type Password</label>
 					    	<div class="controls">
 						    	<input type="password" id="retypePassword" placeholder="Password" name="repassword">
+						    </div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="question">Security Question</label>
+							<div class="controls">
+								<select name="question">
+									<option value="1">What is your mother's maiden name?</option>
+									<option value="2">What was the make of your first car?</option>
+									<option value="3">What is the name of your favorite teacher?</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group">
+					    	<label class="control-label" for="inputAnswer">Answer</label>
+					    	<div class="controls">
+						    	<input type="password" id="inputAnswer" placeholder="Answer" name="answer">					
+						    </div>
+						</div>
+						<div class="control-group">
+					    	<label class="control-label" for="inputPassword">Re-type Answer</label>
+					    	<div class="controls">
+						    	<input type="password" id="retypeAnswer" placeholder="Answer" name="reanswer">
 						    </div>
 						</div>
 						<div class="control-group">
