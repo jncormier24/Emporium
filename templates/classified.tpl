@@ -18,7 +18,7 @@
 					<div class="control-group">
 				    	<label class="control-label" for="postDesc">Description</label>
 				    	<div class="controls">
-					    	<textarea id="postDesc" class="span9" rows="11" name="text">{$v['text']}</textarea>
+					    	<textarea id="postDesc" class="span9" rows="11" name="text">{$v['description']}</textarea>
 					    </div>
 					</div>
 					<div class="control-group">
@@ -28,7 +28,7 @@
 					<input type="hidden" name="list_id" value="{$list_id}"/>
 				</form>
 			{else}
-				<p>{$v['text']}</p>
+				<p>{$v['description']}</p>
 			{/if}
 			{foreach from=$pics item=pic}
 				<img src="{$base_url}/users/{$u_id}/{$pic}" >

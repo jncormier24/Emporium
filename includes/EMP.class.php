@@ -101,7 +101,7 @@ class EMP{
 	 * **/
 	function add_posting( $u_id, $type_id, $text, $title, $URI = null ){
 		$db = dblogin::dbconnect();
-		$sql = "INSERT INTO Listings (u_id, type_id, pics, text, title)
+		$sql = "INSERT INTO Listings (u_id, type_id, pics, description, title)
 				VALUES ('$u_id', '$type_id', '$URI', '$text', '$title')";
 		$rows = $db->Execute( $sql );
 		if( $rows ){
@@ -136,11 +136,10 @@ class EMP{
 				break;
 		}
 		$sql = "UPDATE Listings
-				SET type_id = $cat, description = '$text'
-				WHERE list_id = $list_id";
-		$rows = $db->Execute( $sql );
-		die( var_dump( $rows ) );
-		if( $rows ){
+				SET type = $type, description = '$text'
+				WHERE list_id = '$list_id'";
+				
+		if( $rows = $db->Execute( $sql ) ){
 			return true;
 		}
 		else{
@@ -245,14 +244,14 @@ class EMP{
 				WHERE type_id = '$cat'
 				AND deleted = 0";
 				
-		$sql2 = "SELECT * 
+		/*$sql2 = "SELECT * 
 				 FROM Listings
 				 WHERE deleted = 0
 				 AND title LIKE '%$params%'
 				 OR text LIKE '%$params%'";
 		
-		$sql = "$sql1 UNION $sql2";
-		$rows = $db->Execute( $sql );
+		$sql = "$sql1 UNION $sql2";*/
+		$rows = $db->Execute( $sql1 );
 		$return = $rows->GetRows();
 		return $return;
 	}//end search_postings

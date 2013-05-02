@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-04-28 22:20:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-01 17:01:05
          compiled from "./templates/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:234029118517ab243d19c67-58564441%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97c13ae6868bbc459509c9f1b968154acd23eecc' => 
     array (
       0 => './templates/header.tpl',
-      1 => 1367196889,
+      1 => 1367442063,
       2 => 'file',
     ),
   ),
@@ -31,7 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<meta name="siteHeader"/>
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" type="text/css" />
 		<link href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-/externals/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
+/includes/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen">
 		<link href="<?php echo $_smarty_tpl->tpl_vars['css']->value;?>
 /style.css" rel="stylesheet" type="text/css" media="screen">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

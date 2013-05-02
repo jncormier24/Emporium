@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-01 09:54:07
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-01 22:03:37
          compiled from "./templates/classified.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1943472876517accdf1632d4-06018406%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7cefdabc0e4de2a5815441f4c1b70e08215b4899' => 
     array (
       0 => './templates/classified.tpl',
-      1 => 1367416207,
+      1 => 1367460216,
       2 => 'file',
     ),
   ),
@@ -63,7 +63,7 @@ $_smarty_tpl->tpl_vars['v']->_loop = true;
 					<div class="control-group">
 				    	<label class="control-label" for="postDesc">Description</label>
 				    	<div class="controls">
-					    	<textarea id="postDesc" class="span9" rows="11" name="text"><?php echo $_smarty_tpl->tpl_vars['v']->value['text'];?>
+					    	<textarea id="postDesc" class="span9" rows="11" name="text"><?php echo $_smarty_tpl->tpl_vars['v']->value['description'];?>
 </textarea>
 					    </div>
 					</div>
@@ -75,7 +75,7 @@ $_smarty_tpl->tpl_vars['v']->_loop = true;
 "/>
 				</form>
 			<?php }else{ ?>
-				<p><?php echo $_smarty_tpl->tpl_vars['v']->value['text'];?>
+				<p><?php echo $_smarty_tpl->tpl_vars['v']->value['description'];?>
 </p>
 			<?php }?>
 			<?php  $_smarty_tpl->tpl_vars['pic'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['pic']->_loop = false;

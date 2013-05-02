@@ -6,7 +6,7 @@
 	respond( 'POST', '/create_item/', function( $request, $response, $app ){
 		//$u_id, $type_id, $text, $title
 		$title = $_POST['title'];
-		$text = $_POST['text'];
+		$text = nl2br($_POST['text']);
 		$type = $_POST['type'];
 		$type_id = 0;
 		switch ($type){
@@ -63,8 +63,9 @@
 	respond('POST', '/update_posting/', function( $request, $response, $app ){
 		$list_id = $_POST['list_id'];
 		$type_id = $_POST['type'];
-		$text = $_POST['text'];
+		$text = nl2br($_POST['text']);
 		$update = EMP::update_posting( $list_id, $type_id, $text );
+		var_dump( $upload );
 		if( $upload ){
 			$response->redirect( $GLOBALS['BASE_URL'].'/home');
 		}
