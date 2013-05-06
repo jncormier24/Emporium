@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-01 12:46:11
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-05 23:29:28
          compiled from "./templates/index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2042389586517ab1e5852799-23412580%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c0360d049dff10f364dfc53ba2cc3958abf6ee6d' => 
     array (
       0 => './templates/index.tpl',
-      1 => 1367426767,
+      1 => 1367810928,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_517ab1e5894d05_55222709',
   'variables' => 
   array (
-    'loginError' => 0,
+    'issues' => 0,
     'base_url' => 0,
     'title' => 0,
   ),
@@ -28,9 +28,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_517ab1e5894d05_55222709')) {function content_517ab1e5894d05_55222709($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("indexHead.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 		<div class="row container">
-		<?php if ($_smarty_tpl->tpl_vars['loginError']->value){?>
+		<?php if ($_smarty_tpl->tpl_vars['issues']->value){?>
 			<div class="errors">
-				<span class="label label-important"><?php echo $_smarty_tpl->tpl_vars['loginError']->value;?>
+				<span class="span11 label label-important"><?php echo $_smarty_tpl->tpl_vars['issues']->value;?>
 </span>
 			</div>
 		<?php }?>
@@ -38,8 +38,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<form class="form-horizontal" method="post" action="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 /login/" >
 					<fieldset>
-						<legend><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
-</legend>
+						<legend><a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
+</a></legend>
 						<div class="span6 offset2">
 						 	<div class="control-group"  >
 						    	<label class="control-label" for="inputEmail">Email</label>

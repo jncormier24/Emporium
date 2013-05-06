@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-01 17:01:05
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-05 22:54:01
          compiled from "./templates/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:234029118517ab243d19c67-58564441%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97c13ae6868bbc459509c9f1b968154acd23eecc' => 
     array (
       0 => './templates/header.tpl',
-      1 => 1367442063,
+      1 => 1367808839,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'base_url' => 0,
     'css' => 0,
     'title' => 0,
+    'admin' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -47,7 +48,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 /home"><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </a>
 					<ul class="nav">
-				    	<li><a href="logout">Logout</a></li>
+				    	<li><a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+/logout">Logout</a></li>
+				    	<?php if ($_smarty_tpl->tpl_vars['admin']->value==1){?>
+				    		<li><a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+/admin">Admin</a></li>
+				    	<?php }?>
 					</ul>	
 					<!--form method="get" action="classifieds/">
 						<div class="input-prepend pull-right">

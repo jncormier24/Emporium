@@ -1,14 +1,14 @@
 {include file="indexHead.tpl"}
 		<div class="row container">
-		{if $loginError}
+		{if $issues}
 			<div class="errors">
-				<span class="label label-important">{$loginError}</span>
+				<span class="span11 label label-important">{$issues}</span>
 			</div>
 		{/if}
 			<div class="">
 				<form class="form-horizontal" method="post" action="{$base_url}/login/" >
 					<fieldset>
-						<legend>{$title}</legend>
+						<legend><a href="{$base_url}">{$title}</a></legend>
 						<div class="span6 offset2">
 						 	<div class="control-group"  >
 						    	<label class="control-label" for="inputEmail">Email</label>

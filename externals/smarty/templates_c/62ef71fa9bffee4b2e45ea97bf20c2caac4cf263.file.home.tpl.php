@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-04-29 10:14:10
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-05 23:03:38
          compiled from "./templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1074640096517ab243ceee11-69763101%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1367244847,
+      1 => 1367809402,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'person' => 0,
-    'listings' => 0,
     'base_url' => 0,
+    'messages' => 0,
+    'listings' => 0,
     'listing' => 0,
   ),
   'has_nocache_code' => false,
@@ -29,9 +30,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_517ab243d14d47_18907556')) {function content_517ab243d14d47_18907556($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <div class="container">
-	<legend>Hello, <?php echo $_smarty_tpl->tpl_vars['person']->value[0]['email'];?>
-</legend>
+	<legend>
+		<div class="container">Hello, <?php echo $_smarty_tpl->tpl_vars['person']->value[0]['email'];?>
+
+			<div class="pull-right">
+				<form action="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+/admin/" method="get">
+					<button class="btn btn-help">Admin</button>
+				</form>
+			</div>
+		</div>
+	</legend>
 	<div class="container">
+		<?php if ($_smarty_tpl->tpl_vars['messages']->value){?>
+			<div class="hero-unit">
+				<p><?php echo $_smarty_tpl->tpl_vars['messages']->value;?>
+</p>
+			</div>
+		<?php }?>
 		<table id="listings" class="table table-hover" style="background-color: #FFFFFF">
 			<thead>
 				<tr>Items</tr>

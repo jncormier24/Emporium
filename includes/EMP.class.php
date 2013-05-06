@@ -77,6 +77,19 @@ class EMP{
 		 return $return;
 	 }//end verify user
 	 /**
+	 * find_all_users
+	 * parameters:
+	 * returns: emails
+	 * **/
+	function find_all_users(){
+		$db = dblogin::dbconnect();
+		$sql = "SELECT u_id, email
+				FROM Users";
+		$rows = $db->Execute( $sql );
+		$return = $rows->GetRows();
+		return $return;
+	}//end find_all_users
+	 /**
 	 * reset_password
 	 * parameters: email, password
 	 * returns: true
@@ -94,6 +107,19 @@ class EMP{
 			 return false;
 		 }
 	 }
+	 /**
+	 * find_all_items
+	 * parameters:
+	 * returns: items
+	 * **/
+	function find_all_items(){
+		$db = dblogin::dbconnect();
+		$sql = "SELECT *
+				FROM Listings";
+		$rows = $db->Execute( $sql );
+		$return = $rows->GetRows();
+		return $return;
+	}//end find_all_items
 	/**
 	 * add_posting
 	 * parameters: u_id, URI, text
@@ -136,9 +162,9 @@ class EMP{
 				break;
 		}
 		$sql = "UPDATE Listings
-				SET type = $type, description = '$text'
-				WHERE list_id = '$list_id'";
-				
+				SET type_id = $cat, description = '$text'
+				WHERE list_id = $list_id";
+						
 		if( $rows = $db->Execute( $sql ) ){
 			return true;
 		}
@@ -196,7 +222,6 @@ class EMP{
 				
 		$rows = $db->Execute( $sql );
 		$return = $rows->GetRows();
-		
 		return $return;
 	}//end get_user_listings
 	/**

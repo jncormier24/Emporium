@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-01 13:47:09
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-05 23:29:33
          compiled from "./templates/registration.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1870059316517ae2d1bb3979-52887742%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b4d6eb125bc74eda2c937147d3bd5cd8710da1ce' => 
     array (
       0 => './templates/registration.tpl',
-      1 => 1367430425,
+      1 => 1367810964,
       2 => 'file',
     ),
   ),
@@ -19,25 +19,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_517ae2d1bd8a15_53118154',
   'variables' => 
   array (
-    'messages' => 0,
+    'error' => 0,
+    'base_url' => 0,
     'title' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_517ae2d1bd8a15_53118154')) {function content_517ae2d1bd8a15_53118154($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("indexHead.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
-	
+	<?php if ($_smarty_tpl->tpl_vars['error']->value){?>
 	<div class="row container">
-		<h3><?php echo $_smarty_tpl->tpl_vars['messages']->value;?>
-</h3>
+		<span class="span11 label label-important"><?php echo $_smarty_tpl->tpl_vars['error']->value;?>
+</span>
 	</div>
-	
+	<?php }?>
 	<div class="row container">
 		<div class="">
 			<form id="register" class="form-horizontal" method="post" action="register" >
 				<fieldset>
-					<legend><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
- Registration</legend>
+					<legend><a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
+</a> Registration</legend>
 					<div class="span6 offset2">
 					 	<div class="control-group"  >
 					    	<label class="control-label" for="inputEmail">Email</label>

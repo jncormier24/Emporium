@@ -55,21 +55,9 @@
 				$response->redirect( $GLOBALS['BASE_URL'].'/home');
 			}
 			else{
-				die( 'Something bad happened.' );
+				$_SESSION['messages']['upload'] = "There was a problem with the upload.";
+				$response->redirect( $GLOBALS['BASE_URL'].'/home');
 			}
 		}
 	});
 	
-	respond('POST', '/update_posting/', function( $request, $response, $app ){
-		$list_id = $_POST['list_id'];
-		$type_id = $_POST['type'];
-		$text = nl2br($_POST['text']);
-		$update = EMP::update_posting( $list_id, $type_id, $text );
-		var_dump( $upload );
-		if( $upload ){
-			$response->redirect( $GLOBALS['BASE_URL'].'/home');
-		}
-		else{
-			die( 'Something bad happened.' );
-		}
-	});

@@ -1,14 +1,14 @@
 {include file="indexHead.tpl"}
-	{*if $messages*}
+	{if $error}
 	<div class="row container">
-		<h3>{$messages}</h3>
+		<span class="span11 label label-important">{$error}</span>
 	</div>
-	{*/if*}
+	{/if}
 	<div class="row container">
 		<div class="">
 			<form id="register" class="form-horizontal" method="post" action="register" >
 				<fieldset>
-					<legend>{$title} Registration</legend>
+					<legend><a href="{$base_url}">{$title}</a> Registration</legend>
 					<div class="span6 offset2">
 					 	<div class="control-group"  >
 					    	<label class="control-label" for="inputEmail">Email</label>

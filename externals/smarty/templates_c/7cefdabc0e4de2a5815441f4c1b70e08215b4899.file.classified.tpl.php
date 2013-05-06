@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-01 22:03:37
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-05 20:12:28
          compiled from "./templates/classified.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1943472876517accdf1632d4-06018406%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7cefdabc0e4de2a5815441f4c1b70e08215b4899' => 
     array (
       0 => './templates/classified.tpl',
-      1 => 1367460216,
+      1 => 1367799107,
       2 => 'file',
     ),
   ),
@@ -49,7 +49,7 @@ $_smarty_tpl->tpl_vars['v']->_loop = true;
 </a></legend>
 			<?php if ($_smarty_tpl->tpl_vars['person']->value[0]['u_id']==$_smarty_tpl->tpl_vars['u_id']->value){?>
 				<form class="row span8 offset2" method="post" action="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-/new_item/update_posting/" enctype="multipart/form-data">
+/update/" enctype="multipart/form-data">
 					<div class="control-group">
 						<label class="control-label" for="postType">Post Type</label>
 			    		<select name="type">
@@ -68,8 +68,15 @@ $_smarty_tpl->tpl_vars['v']->_loop = true;
 					    </div>
 					</div>
 					<div class="control-group">
-			    	<div class="controls">
-				        <button type="submit" class="btn">Post</button>
+				    	<div class="controls">
+					        <button type="submit" class="btn btn-success">Update</button>
+					        <form class="pull-right" method="post" action="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+/delete">
+					        <button type="submit" class="btn btn-danger">Delete</button>
+							<input type="hidden" name="list_id" value="<?php echo $_smarty_tpl->tpl_vars['list_id']->value;?>
+"/>
+					        </form>
+						</div>
 					</div>
 					<input type="hidden" name="list_id" value="<?php echo $_smarty_tpl->tpl_vars['list_id']->value;?>
 "/>

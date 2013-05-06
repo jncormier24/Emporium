@@ -4,7 +4,7 @@
 		{foreach from=$item key=k item=v}
 			<legend>{$v['title']}, posted by <a href="mailto:{$user}?Subject=Emporium - {$v['title']}" target="_blank">{$user}</a></legend>
 			{if $person[0]['u_id'] == $u_id}
-				<form class="row span8 offset2" method="post" action="{$base_url}/new_item/update_posting/" enctype="multipart/form-data">
+				<form class="row span8 offset2" method="post" action="{$base_url}/update/" enctype="multipart/form-data">
 					<div class="control-group">
 						<label class="control-label" for="postType">Post Type</label>
 			    		<select name="type">
@@ -22,8 +22,13 @@
 					    </div>
 					</div>
 					<div class="control-group">
-			    	<div class="controls">
-				        <button type="submit" class="btn">Post</button>
+				    	<div class="controls">
+					        <button type="submit" class="btn btn-success">Update</button>
+					        <form class="pull-right" method="post" action="{$base_url}/delete">
+					        <button type="submit" class="btn btn-danger">Delete</button>
+							<input type="hidden" name="list_id" value="{$list_id}"/>
+					        </form>
+						</div>
 					</div>
 					<input type="hidden" name="list_id" value="{$list_id}"/>
 				</form>

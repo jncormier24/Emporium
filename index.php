@@ -1,6 +1,5 @@
 <?php
 	require( 'includes/autoload.php' );
-	
 	global $GLOBALS;
 	
 	respond( function($request, $resonse, $app){
@@ -18,6 +17,7 @@
 		
 		$GLOBALS['uploads'] = '/home/PLYMOUTH/jncormier/Home/git-checkout/emporium/users';
 		$GLOBALS['messages'] = array();
+		$GLOBALS['person'] = array();
 		
 		$app->tpl->assign( 'base_url', $GLOBALS['BASE_URL'] );
 		$app->tpl->assign( 'js', $GLOBALS['JS'] );
@@ -25,14 +25,17 @@
 	});
 
 	respond( '/', function($request, $response, $app){
+		$app->tpl->assign( 'issues', $_SESSION['messages']['login'] );
 		$app->tpl->display( 'index.tpl' );
 	});
 
 	respond( '/home', function($request, $response, $app){
 		if( $_SESSION['person'] ){
 			$user_stuff = EMP::get_user_listings( $_SESSION['person'][0]['u_id'] );
+			$user = explode( '@', $_SESSION['person'][0]['email'] );
 			$app->tpl->assign( 'listings', $user_stuff );
 			$app->tpl->assign( 'person', $_SESSION['person'] );
+			$app->tpl->assign( 'errors', $_SESSION['messages']['upload'] );
 			$app->tpl->display( 'home.tpl' );
 		}
 		else{
@@ -51,22 +54,36 @@
 		}	
 	});
 	
-	respond( 'GET', '/classified/[:id]', function( $request, $resonse, $app ){
+	respond( 'GET', '/classified/[:id]', function( $request, $response, $app ){
 		if( $_SESSION['person'] ){
 			$id = $request->param( 'id' );
 			$item = EMP::get_posting( $id );
 			$user = EMP::find_user( $item[0]['u_id'] );
+			$pictures = json_decode( $item[0]['pics'] );
 			$app->tpl->assign( 'person', $_SESSION['person'] );
 			$app->tpl->assign( 'u_id', $item[0]['u_id'] );
 			$app->tpl->assign( 'user', $user[0]['email'] );
 			$app->tpl->assign( 'item', $item );
-			$app->tpl->assign( 'text', $text );
 			$app->tpl->assign( 'pics', $pictures );
 			$app->tpl->assign( 'list_id', $id );
 			$app->tpl->display( 'classified.tpl' );
 		}
 		else{
 			$response->redirect( $GLOBALS['BASE_URL'] );
+		}
+	});
+	
+	respond('POST', '/update/?', function( $request, $response, $app ){
+		$list_id = $_POST['list_id'];
+		$type_id = $_POST['type'];
+		$text = $_POST['text'];
+		$upload = EMP::update_posting( $list_id, $type, $text );
+		if( $upload ){
+			$response->redirect( $GLOBALS['BASE_URL'].'/home');
+		}
+		else{
+			$_SESSION['messages']['upload'][] = "There was an error updating your post.";
+			$response->redirect( $GLOBALS['BASE_URL'].'/home');
 		}
 	});
 	
@@ -91,7 +108,8 @@
 		'registration',
 		'login',
 		'new_item',
-		'recover'
+		'recover',
+		'admin'
 		//'classifieds',
 		//'posts',
 		//'new_post'

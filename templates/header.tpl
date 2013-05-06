@@ -15,7 +15,10 @@
 				<div class="container">
 					<a class="brand" href="{$base_url}/home">{$title}</a>
 					<ul class="nav">
-				    	<li><a href="logout">Logout</a></li>
+				    	<li><a href="{$base_url}/logout">Logout</a></li>
+				    	{if $admin == 1 }
+				    		<li><a href="{$base_url}/admin">Admin</a></li>
+				    	{/if}
 					</ul>	
 					<!--form method="get" action="classifieds/">
 						<div class="input-prepend pull-right">

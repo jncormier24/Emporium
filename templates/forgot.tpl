@@ -1,9 +1,12 @@
 {include file="indexHead.tpl"}
 	<div class="row container">
+		{if $error}
+			<span class="span11 label label-important">{$error}</span>
+		{/if}
 		<div class="">
 			<form id="register" class="form-horizontal" method="post" action="recovery" >
 				<fieldset>
-					<legend>{$title} Forgot Password</legend>
+					<legend><a href="{$base_url}">{$title}</a> Forgot Password</legend>
 					<div class="span6 offset2">
 						<div class="control-group"  >
 							<label class="control-label" for="inputEmail">Email</label>
