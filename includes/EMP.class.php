@@ -3,12 +3,21 @@
 /**
  * Emporium Class
  * v 1.0 1/29/13
- * db_connect [3/18/13]
  * add_user [3/18/13]
  * find_user [3/18/13]
  * add_posting [3/18/13]
  * list_postings [3/18/13]
  * search_postings [3/18/13]
+ * login 
+ * verify_user
+ * find_all_users
+ * reset_password
+ * find_all_items
+ * update_posting
+ * get_user_listings
+ * get_postings
+ * delele_posting
+ * upload
  * **/
 require_once( 'dblogin.php' );
 
@@ -160,6 +169,9 @@ class EMP{
 			case 'wanted':
 				$cat = 5;
 				break;
+			case 'other':
+				$cat = 6;
+				break;
 		}
 		$sql = "UPDATE Listings
 				SET type_id = $cat, description = '$text'
@@ -195,6 +207,9 @@ class EMP{
 				break;
 			case 'wanted':
 				$cat = 5;
+				break;
+			case 'other':
+				$cat = 6;
 				break;
 		}
 		$sql = "SELECT * 
@@ -262,20 +277,18 @@ class EMP{
 			case 'wanted':
 				$cat = 5;
 				break;
+			case 'other':
+				$cat = 6;
+				break;
 		}
 		
-		$sql1 = "SELECT *
+		$sql1 = "SELECT * 
 				FROM Listings
-				WHERE type_id = '$cat'
-				AND deleted = 0";
-				
-		/*$sql2 = "SELECT * 
-				 FROM Listings
-				 WHERE deleted = 0
-				 AND title LIKE '%$params%'
-				 OR text LIKE '%$params%'";
+				WHERE deleted = 0
+				AND type_id = $cat
+				OR title LIKE '%$params%'
+				OR description LIKE '%$params%'";
 		
-		$sql = "$sql1 UNION $sql2";*/
 		$rows = $db->Execute( $sql1 );
 		$return = $rows->GetRows();
 		return $return;

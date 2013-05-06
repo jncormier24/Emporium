@@ -18,6 +18,7 @@
 						<option value="furniture">Furniture</option>
 						<option value="appliances">Appliances</option>
 						<option value="electronics">Electronics</option>
+						<option value="other">Other</option>
 						<option value="wanted">Wanted</option>
 					</select>
 				</div>

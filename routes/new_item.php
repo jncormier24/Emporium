@@ -25,6 +25,9 @@
 			case 'wanted':
 				$type_id = 5;
 				break;
+			case 'other':
+				$cat = 6;
+				break;
 		}
 		$u_id = $_SESSION['person'][0]['u_id'];
 		$locals = array();
