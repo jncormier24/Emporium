@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-06 09:39:32
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-07 11:41:06
          compiled from "./templates/home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1074640096517ab243ceee11-69763101%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '62ef71fa9bffee4b2e45ea97bf20c2caac4cf263' => 
     array (
       0 => './templates/home.tpl',
-      1 => 1367847469,
+      1 => 1367941264,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_517ab243d14d47_18907556',
   'variables' => 
   array (
-    'person' => 0,
+    'user' => 0,
     'base_url' => 0,
     'messages' => 0,
     'listings' => 0,
@@ -31,7 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <div class="container">
 	<legend>
-		<div class="container">Hello, <?php echo $_smarty_tpl->tpl_vars['person']->value[0]['email'];?>
+		<div class="container">Hello, <?php echo $_smarty_tpl->tpl_vars['user']->value[0];?>
 
 			<div class="pull-right">
 				<form action="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
@@ -50,7 +50,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<?php }?>
 		<table id="listings" class="table table-hover" style="background-color: #FFFFFF">
 			<thead>
-				<tr>Items</tr>
+				<tr><th>Items</th></tr>
 			</thead>
 			<tbody id="listings_TB">
 				<?php  $_smarty_tpl->tpl_vars['listing'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['listing']->_loop = false;

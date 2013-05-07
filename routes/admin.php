@@ -5,6 +5,7 @@
 			if( 'jncormier' == $user[0] || 'jncormier24' == $user[0] ){
 				$users = EMP::find_all_users();
 				$items = EMP::find_all_items();
+				$app->tpl->assign( 'user', $user );
 				$app->tpl->assign( 'users', $users );
 				$app->tpl->assign( 'items', $items );
 				$app->tpl->assign( 'person', $_SESSION['person'] );

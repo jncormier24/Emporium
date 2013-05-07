@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-04-28 20:54:34
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-06 12:01:09
          compiled from "./templates/new_item.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:490644945517ab26631f692-03480218%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5e54d914b0b7abcda32e0eb9e6a5480fb790b3b3' => 
     array (
       0 => './templates/new_item.tpl',
-      1 => 1367185531,
+      1 => 1367847497,
       2 => 'file',
     ),
   ),
@@ -45,6 +45,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<option value="furniture">Furniture</option>
 						<option value="appliances">Appliances</option>
 						<option value="electronics">Electronics</option>
+						<option value="other">Other</option>
 						<option value="wanted">Wanted</option>
 					</select>
 				</div>

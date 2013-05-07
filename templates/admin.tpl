@@ -1,6 +1,6 @@
 {include file='header.tpl'}
 <div class="container">
-	<legend>Hello, {$person[0]['email']}</legend>
+	<legend>Hello, {$user[0]}</legend>
 	<div class="container">
 		{if $messages}
 			<div class="hero-unit">
@@ -9,7 +9,10 @@
 		{/if}
 		<table id="listings" class="table table-hover" style="background-color: #FFFFFF">
 			<thead>
-				<tr>Items</tr>
+				<tr>
+					<th>Users</th>
+					<th>User ID</th>
+				</tr>
 			</thead>
 			<tbody id="listings_TB">
 				{foreach from=$users item=user}
@@ -17,6 +20,9 @@
 						<form method="GET" action="delete">
 							<td>
 								{$user['email']}
+							</td>
+							<td>
+								{$user['u_id']}
 							</td>
 							<td>
 								<button class="btn btn-danger pull-right" type="submit">Delete</button>
@@ -30,14 +36,18 @@
 		<hr>
 		<table id="listings" class="table table-hover" style="background-color: #FFFFFF">
 			<thead>
-				<tr>Items</tr>
+				<tr>
+					<th>Items</th>
+					<th>User ID</th>
+					<th>Type</th>
+				</tr>
 			</thead>
 			<tbody id="listings_TB">
 				{foreach from=$items item=item}
 					<tr>
 						<form method="GET" action="delete">
 							<td>
-								{$item['title']}
+							<a href="{$base_url}/classified/{$listing['list_id']}">{$item['title']}</a>
 							</td>
 							<td>
 								{$item['u_id']}

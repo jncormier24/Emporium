@@ -1,7 +1,7 @@
 {include file='header.tpl'}
 <div class="container">
 	<legend>
-		<div class="container">Hello, {$person[0]['email']}
+		<div class="container">Hello, {$user[0]}
 			<div class="pull-right">
 				<form action="{$base_url}/admin/" method="get">
 					<button class="btn btn-help">Admin</button>
@@ -17,7 +17,7 @@
 		{/if}
 		<table id="listings" class="table table-hover" style="background-color: #FFFFFF">
 			<thead>
-				<tr>Items</tr>
+				<tr><th>Items</th></tr>
 			</thead>
 			<tbody id="listings_TB">
 				{foreach from=$listings item=listing}

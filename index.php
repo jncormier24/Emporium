@@ -1,6 +1,5 @@
 <?php
 	require( 'includes/autoload.php' );
-	global $GLOBALS;
 	
 	respond( function($request, $resonse, $app){
 		session_start();
@@ -34,6 +33,7 @@
 			$user_stuff = EMP::get_user_listings( $_SESSION['person'][0]['u_id'] );
 			$user = explode( '@', $_SESSION['person'][0]['email'] );
 			$app->tpl->assign( 'listings', $user_stuff );
+			$app->tpl->assign( 'user', $user );
 			$app->tpl->assign( 'person', $_SESSION['person'] );
 			$app->tpl->assign( 'errors', $_SESSION['messages']['upload'] );
 			$app->tpl->display( 'home.tpl' );
@@ -73,7 +73,7 @@
 		}
 	});
 	
-	respond('POST', '/update/?', function( $request, $response, $app ){
+	respond( 'POST', '/update/?', function( $request, $response, $app ){
 		$list_id = $_POST['list_id'];
 		$type_id = $_POST['type'];
 		$text = $_POST['text'];
