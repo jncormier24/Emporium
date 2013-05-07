@@ -104,15 +104,14 @@
 		$response->redirect( $GLOBALS['BASE_URL'] );
 	});
 	
+	
 	$routes = array(
 		'registration',
 		'login',
 		'new_item',
 		'recover',
-		'admin'
-		//'classifieds',
-		//'posts',
-		//'new_post'
+		'admin',
+		404
 	);
 	
 	foreach( $routes as $base ){
