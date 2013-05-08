@@ -3,9 +3,11 @@
 	<legend>
 		<div class="container">Hello, {$user[0]}
 			<div class="pull-right">
-				<form action="{$base_url}/admin/" method="get">
-					<button class="btn btn-help">Admin</button>
-				</form>
+				{if $admin}
+					<form action="{$base_url}/admin/" method="get">
+						<button class="btn btn-help">Admin</button>
+					</form>
+				{/if}
 			</div>
 		</div>
 	</legend>
@@ -15,26 +17,28 @@
 				<p>{$messages}</p>
 			</div>
 		{/if}
-		<table id="listings" class="table table-hover" style="background-color: #FFFFFF">
-			<thead>
-				<tr><th>Items</th></tr>
-			</thead>
-			<tbody id="listings_TB">
-				{foreach from=$listings item=listing}
-					<tr>
-						<form method="GET" action="delete">
-							<td>
-								<a href="{$base_url}/classified/{$listing['list_id']}" >{$listing['title']}</a>
-							</td>
-							<td>
-								<button class="btn btn-danger pull-right" type="submit">Delete</button>
-							</td>
-							<input type="hidden" name="post_id" value="{$listing['list_id']}" />
-						</form>
-					</tr>
-				{/foreach}
-			</tbody>
-		</table>
+		{if $listings}	
+			<table id="listings" class="table table-hover" style="background-color: #FFFFFF">
+				<thead>
+					<tr><th>Items</th></tr>
+				</thead>
+				<tbody id="listings_TB">
+					{foreach from=$listings item=listing}
+						<tr>
+							<form method="GET" action="delete">
+								<td>
+									<a href="{$base_url}/classified/{$listing['list_id']}" >{$listing['title']}</a>
+								</td>
+								<td>
+									<button class="btn btn-danger pull-right delete" type="submit">Delete</button>
+								</td>
+								<input type="hidden" name="post_id" value="{$listing['list_id']}" />
+							</form>
+						</tr>
+					{/foreach}
+				</tbody>
+			</table>
+		{/if}
 	</div>
 	<div class="container">
 		<div class="hero-unit pull-left">

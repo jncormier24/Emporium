@@ -2,7 +2,7 @@
 	respond( '/', function( $request, $response, $app ){
 		if( $_SESSION['person'] ){
 			$user = explode( '@', $_SESSION['person'][0]['email'] );
-			if( 'jncormier' == $user[0] || 'jncormier24' == $user[0] ){
+			if( 'jncormier24' == $user[0] ){
 				$users = EMP::find_all_users();
 				$items = EMP::find_all_items();
 				$app->tpl->assign( 'user', $user );

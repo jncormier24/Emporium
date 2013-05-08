@@ -32,6 +32,9 @@
 		if( $_SESSION['person'] ){
 			$user_stuff = EMP::get_user_listings( $_SESSION['person'][0]['u_id'] );
 			$user = explode( '@', $_SESSION['person'][0]['email'] );
+			if( 'jncormier24' == $user[0] ){
+				$app->tpl->assign( 'admin', 1 );
+			}
 			$app->tpl->assign( 'listings', $user_stuff );
 			$app->tpl->assign( 'user', $user );
 			$app->tpl->assign( 'person', $_SESSION['person'] );
@@ -64,8 +67,10 @@
 		if( $_SESSION['person'] ){
 			$id = $request->param( 'id' );
 			$item = EMP::get_posting( $id );
+			$text = nl2br( $item[0]['description'] );
 			$user = EMP::find_user( $item[0]['u_id'] );
 			$pictures = json_decode( $item[0]['pics'] );
+			$app->tpl->assign( 'desc', $text );
 			$app->tpl->assign( 'person', $_SESSION['person'] );
 			$app->tpl->assign( 'u_id', $item[0]['u_id'] );
 			$app->tpl->assign( 'user', $user[0]['email'] );
