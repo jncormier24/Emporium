@@ -24,11 +24,8 @@
 					</div>
 					<div class="control-group">
 				    	<div class="controls">
-					        <button type="submit" class="btn btn-success">Update</button>
-					        <form class="pull-right" method="post" action="{$base_url}/delete">
-					        <button type="submit" class="btn btn-danger">Delete</button>
-							<input type="hidden" name="list_id" value="{$list_id}"/>
-					        </form>
+					        <button type="submit" class="btn btn-success" name="update">Update</button>
+					        <button type="submit" class="btn btn-danger" name="delete">Delete</button>
 						</div>
 					</div>
 					<input type="hidden" name="list_id" value="{$list_id}"/>

@@ -46,7 +46,13 @@
 	respond( 'GET', '/classifieds/?', function($request, $response, $app){
 		if( $_SESSION['person'] ){
 			$listings = EMP::search_postings( $_GET['type'] , $_GET['search'] );
-			$app->tpl->assign( 'listings', $listings );
+			$items = array();
+			foreach( $listings as $listing ){
+				foreach( $listing as $item){
+					$items[$item['list_id']] = $item;
+				}
+			}
+			$app->tpl->assign( 'listings', $items );
 			$app->tpl->display( 'classifieds.tpl' );
 		}
 		else{
@@ -74,16 +80,28 @@
 	});
 	
 	respond( 'POST', '/update/?', function( $request, $response, $app ){
-		$list_id = $_POST['list_id'];
-		$type_id = $_POST['type'];
-		$text = $_POST['text'];
-		$upload = EMP::update_posting( $list_id, $type, $text );
-		if( $upload ){
-			$response->redirect( $GLOBALS['BASE_URL'].'/home');
+		if( $_SESSION['person'] ){
+			$list_id = $_POST['list_id'];
+			$type_id = $_POST['type'];
+			$text = $_POST['text'];
+			if( isset($_POST['update']) ){
+				$upload = EMP::update_posting( $list_id, $type, $text );
+				if( $upload ){
+					$response->redirect( $GLOBALS['BASE_URL'].'/home');
+				}
+				else{
+					$_SESSION['messages']['upload'][] = "There was an error updating your post.";
+					$response->redirect( $GLOBALS['BASE_URL'].'/home');
+				}
+			}
+			if( isset($_POST['delete']) ){
+				$item = $_POST['list_id'];
+				EMP::delete_posting( $item );
+				$response->redirect( $GLOBALS['BASE_URL'].'/home' );
+			}
 		}
 		else{
-			$_SESSION['messages']['upload'][] = "There was an error updating your post.";
-			$response->redirect( $GLOBALS['BASE_URL'].'/home');
+			$response->redirect( $GLOBALS['BASE_URL'] );
 		}
 	});
 	

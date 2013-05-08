@@ -45,9 +45,9 @@
 			<tbody id="listings_TB">
 				{foreach from=$items item=item}
 					<tr>
-						<form method="GET" action="delete">
+						<form method="GET" action="{$base_url}/delete">
 							<td>
-							<a href="{$base_url}/classified/{$listing['list_id']}">{$item['title']}</a>
+							<a href="{$base_url}/classified/{$item['list_id']}">{$item['title']}</a>
 							</td>
 							<td>
 								{$item['u_id']}

@@ -281,16 +281,23 @@ class EMP{
 				$cat = 6;
 				break;
 		}
-		
+		$return = array();
 		$sql1 = "SELECT * 
 				FROM Listings
 				WHERE deleted = 0
-				AND type_id = $cat
-				OR title LIKE '%$params%'
-				OR description LIKE '%$params%'";
+				AND type_id = $cat";
+		$rows1 = $db->Execute( $sql1 );
+		$return[0] = $rows1->GetRows();
 		
-		$rows = $db->Execute( $sql1 );
-		$return = $rows->GetRows();
+		if( '' != $params ){
+			$sql2 = "SELECT * 
+				 FROM Listings
+				 WHERE deleted = 0
+				 AND title LIKE '%$params%'
+				 OR description LIKE '%$params%'";
+			$rows2 = $db->Execute( $sql2 );
+			$return[1] = $rows2->GetRows();
+		}
 		return $return;
 	}//end search_postings
 	/**
@@ -301,8 +308,8 @@ class EMP{
 	function delete_posting( $post_id ){
 		$db = dblogin::dbconnect();
 		$sql = "UPDATE Listings
-				SET deleted = 1
-				WHERE list_id = '$post_id'";
+						SET deleted = 1
+						WHERE list_id = '$post_id'";
 		if( $rows = $db->Execute( $sql ) ){
 			return true;
 		}
@@ -311,28 +318,21 @@ class EMP{
 		}
 	}//end delete_posting
 	/**
-	 * upload
-	 * parameters: files
-	 * returns: array of uploaded file urls
+	 * admin_delete
+	 * paramters: type, item_id
+	 * returns: boolean
 	 * **/
-	function upload( $files ){
-		$locals = Array();
-		foreach ($files["pictures"]["error"] as $key => $error) {
-			if ($error == UPLOAD_ERR_OK) {
-				$tmp_name = $files["pictures"]["tmp_name"][$key];
-				$name = $files["pictures"]["name"][$key];
-				$user_dir = $GLOBALS['uploads'].'/'.$_SESSION['person'][0]['u_id'];
-				if( !file_exists( $user_dir ) ){
-					mkdir( $user_dir );
-				}
-				if( move_uploaded_file($tmp_name, $user_dir."/".$name) ){
-					$locals[$name] = $name;
-				}
-				else{
-					return false;
-				}
-			}
+	function admin_delete( $type, $item_id ){
+		$db = dblogin::dbconnect();
+		$sql = "DELETE FROM $type
+						WHERE list_id = $item_id";
+		
+		if( $rows = $db->Execute( $sql ) ){
+			return true;
 		}
-		return $locals;
-	}//end upload
+		else{
+			return false;
+		}
+	}//end admin_delete
+
 }

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-07 11:43:57
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-07 16:25:29
          compiled from "./templates/admin.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:135417954351871bfcc6f621-62360342%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'eb669023950c29719bac9ad0fab891ac18fb23f9' => 
     array (
       0 => './templates/admin.tpl',
-      1 => 1367941344,
+      1 => 1367958318,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'users' => 0,
     'items' => 0,
     'base_url' => 0,
-    'listing' => 0,
     'item' => 0,
   ),
   'has_nocache_code' => false,
@@ -90,10 +89,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['item']->_loop = true;
 ?>
 					<tr>
-						<form method="GET" action="delete">
+						<form method="GET" action="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+/delete">
 							<td>
 							<a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-/classified/<?php echo $_smarty_tpl->tpl_vars['listing']->value['list_id'];?>
+/classified/<?php echo $_smarty_tpl->tpl_vars['item']->value['list_id'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 </a>
 							</td>

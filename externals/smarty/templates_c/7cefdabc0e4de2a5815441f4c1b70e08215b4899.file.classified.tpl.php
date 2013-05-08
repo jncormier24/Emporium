@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-06 09:51:53
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-07 22:15:03
          compiled from "./templates/classified.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1943472876517accdf1632d4-06018406%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7cefdabc0e4de2a5815441f4c1b70e08215b4899' => 
     array (
       0 => './templates/classified.tpl',
-      1 => 1367847485,
+      1 => 1367978488,
       2 => 'file',
     ),
   ),
@@ -70,13 +70,8 @@ $_smarty_tpl->tpl_vars['v']->_loop = true;
 					</div>
 					<div class="control-group">
 				    	<div class="controls">
-					        <button type="submit" class="btn btn-success">Update</button>
-					        <form class="pull-right" method="post" action="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-/delete">
-					        <button type="submit" class="btn btn-danger">Delete</button>
-							<input type="hidden" name="list_id" value="<?php echo $_smarty_tpl->tpl_vars['list_id']->value;?>
-"/>
-					        </form>
+					        <button type="submit" class="btn btn-success" name="update">Update</button>
+					        <button type="submit" class="btn btn-danger" name="delete">Delete</button>
 						</div>
 					</div>
 					<input type="hidden" name="list_id" value="<?php echo $_smarty_tpl->tpl_vars['list_id']->value;?>
