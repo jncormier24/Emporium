@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-07 16:25:29
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-09 22:55:40
          compiled from "./templates/admin.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:135417954351871bfcc6f621-62360342%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'eb669023950c29719bac9ad0fab891ac18fb23f9' => 
     array (
       0 => './templates/admin.tpl',
-      1 => 1367958318,
+      1 => 1368154530,
       2 => 'file',
     ),
   ),
@@ -54,21 +54,19 @@ foreach ($_from as $_smarty_tpl->tpl_vars['user']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['user']->_loop = true;
 ?>
 					<tr>
-						<form method="GET" action="delete">
-							<td>
-								<?php echo $_smarty_tpl->tpl_vars['user']->value['email'];?>
+						<td>
+							<?php echo $_smarty_tpl->tpl_vars['user']->value['email'];?>
 
-							</td>
-							<td>
-								<?php echo $_smarty_tpl->tpl_vars['user']->value['u_id'];?>
+						</td>
+						<td>
+							<?php echo $_smarty_tpl->tpl_vars['user']->value['u_id'];?>
 
-							</td>
-							<td>
-								<button class="btn btn-danger pull-right" type="submit">Delete</button>
-							</td>
-							<input type="hidden" name="post_id" value="<?php echo $_smarty_tpl->tpl_vars['user']->value['u_id'];?>
+						</td>
+						<td>
+							<button class="btn btn-danger pull-right" type="submit">Delete</button>
+						</td>
+						<input type="hidden" name="post_id" value="<?php echo $_smarty_tpl->tpl_vars['user']->value['u_id'];?>
 " />
-						</form>
 					</tr>
 				<?php } ?>
 			</tbody>
@@ -78,8 +76,10 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
 			<thead>
 				<tr>
 					<th>Items</th>
+					<th>Item ID</th>
 					<th>User ID</th>
 					<th>Type</th>
+					<th>Deleted</th>
 				</tr>
 			</thead>
 			<tbody id="listings_TB">
@@ -88,14 +88,17 @@ $_smarty_tpl->tpl_vars['user']->_loop = true;
 foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
 $_smarty_tpl->tpl_vars['item']->_loop = true;
 ?>
-					<tr>
-						<form method="GET" action="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-/delete">
+					<form method="POST" action="admin_delete/">
+						<tr>	
 							<td>
 							<a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 /classified/<?php echo $_smarty_tpl->tpl_vars['item']->value['list_id'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 </a>
+							</td>
+							<td>
+								<?php echo $_smarty_tpl->tpl_vars['item']->value['list_id'];?>
+
 							</td>
 							<td>
 								<?php echo $_smarty_tpl->tpl_vars['item']->value['u_id'];?>
@@ -114,8 +117,8 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 							</td>
 							<input type="hidden" name="post_id" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['list_id'];?>
 " />
-						</form>
-					</tr>
+						</tr>
+					</form>
 				<?php } ?>
 			</tbody>
 		</table>

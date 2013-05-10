@@ -39,6 +39,7 @@
 			$app->tpl->assign( 'user', $user );
 			$app->tpl->assign( 'person', $_SESSION['person'] );
 			$app->tpl->assign( 'errors', $_SESSION['messages']['upload'] );
+			unset( $_SESSION['messages']['upload'] );
 			$app->tpl->display( 'home.tpl' );
 		}
 		else{
@@ -87,7 +88,7 @@
 	respond( 'POST', '/update/?', function( $request, $response, $app ){
 		if( $_SESSION['person'] ){
 			$list_id = $_POST['list_id'];
-			$type_id = $_POST['type'];
+			$type = $_POST['type'];
 			$text = $_POST['text'];
 			if( isset($_POST['update']) ){
 				$upload = EMP::update_posting( $list_id, $type, $text );
@@ -95,7 +96,7 @@
 					$response->redirect( $GLOBALS['BASE_URL'].'/home');
 				}
 				else{
-					$_SESSION['messages']['upload'][] = "There was an error updating your post.";
+					$_SESSION['messages']['upload'] = "There was an error updating your post.";
 					$response->redirect( $GLOBALS['BASE_URL'].'/home');
 				}
 			}

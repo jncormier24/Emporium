@@ -32,7 +32,13 @@
 		$u_id = $_SESSION['person'][0]['u_id'];
 		$locals = array();
 		foreach ($_FILES["pictures"]["error"] as $key => $error) {
-			if ($error == UPLOAD_ERR_OK) {
+			if ($error == UPLOAD_ERR_OK
+				|| $_FILES["file"]["type"] == "image/gif"
+				|| $_FILES["file"]["type"] == "image/jpeg"
+				|| $_FILES["file"]["type"] == "image/jpg"
+				|| $_FILES["file"]["type"] == "image/pjpeg"
+				|| $_FILES["file"]["type"] == "image/x-png"
+				|| $_FILES["file"]["type"] == "image/png" ) {
 				$tmp_name = $_FILES["pictures"]["tmp_name"][$key];
 				$name = $_FILES["pictures"]["name"][$key];
 				$user_dir = $GLOBALS['uploads'].'/'.$_SESSION['person'][0]['u_id'];
@@ -41,9 +47,6 @@
 				}
 				if( move_uploaded_file($tmp_name, $user_dir."/".$name) ){
 					$locals[count($locals)] = $name;
-				}
-				else{
-					die('issues..');
 				}
 			}
 		}

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-05 23:31:16
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-09 23:36:30
          compiled from "./templates/forgot.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1629238865518146d446b310-23853549%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '577b2c95715fb41671eb65aa6989d69ea999fa6a' => 
     array (
       0 => './templates/forgot.tpl',
-      1 => 1367811035,
+      1 => 1368153628,
       2 => 'file',
     ),
   ),
@@ -33,7 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </span>
 		<?php }?>
 		<div class="">
-			<form id="register" class="form-horizontal" method="post" action="recovery" >
+			<form id="register" class="form-horizontal" method="post" action="recovery/" >
 				<fieldset>
 					<legend><a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
@@ -42,7 +42,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<div class="control-group"  >
 							<label class="control-label" for="inputEmail">Email</label>
 							<div class="controls">
-						    	<input type="text" id="inputEmail" placeholder="Email" name="email">						    	
+						    	<input type="text" id="inputEmail" placeholder="Email" name="email" required="email">	
 						    </div>
 						</div>
 						<div class="control-group">
@@ -58,25 +58,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<div class="control-group">
 							<label class="control-label" for="inputAnswer">Answer</label>
 							<div class="controls">
-						    	<input type="password" id="inputAnswer" placeholder="Answer" name="answer">					
+						    	<input type="password" id="inputAnswer" placeholder="Answer" name="answer" required>
 						    </div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="inputPassword">Re-type Answer</label>
 							<div class="controls">
-						    	<input type="password" id="retypeAnswer" placeholder="Answer" name="reanswer">
+						    	<input type="password" id="retypeAnswer" placeholder="Answer" name="reanswer" required>
 						    </div>
 						</div>
 						<div class="control-group">
 					    	<label class="control-label" for="inputPassword">Password</label>
 					    	<div class="controls">
-						    	<input type="password" id="inputPassword" placeholder="Password" name="password">					
+						    	<input type="password" id="inputPassword" placeholder="Password" name="password" required>		
 						    </div>
 						</div>
 						<div class="control-group">
 					    	<label class="control-label" for="inputPassword">Re-type Password</label>
 					    	<div class="controls">
-						    	<input type="password" id="retypePassword" placeholder="Password" name="repassword">
+						    	<input type="password" id="retypePassword" placeholder="Password" name="repassword" required>
 						    </div>
 						</div>
 						<div class="control-group">
@@ -90,4 +90,5 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		</div>
 	</div>
 <?php echo $_smarty_tpl->getSubTemplate ("footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 <?php }} ?>

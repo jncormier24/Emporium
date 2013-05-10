@@ -1,6 +1,7 @@
 <?php
 	respond( '/', function($request, $response, $app){
-		$app->tpl->assign( 'error', $_SESSION['messages']['registration'] );	
+		$app->tpl->assign( 'error', $_SESSION['messages']['registration'] );
+		unset($_SESSION['messages']['registration']);	
 		$app->tpl->display( 'registration.tpl' );
 	});
 

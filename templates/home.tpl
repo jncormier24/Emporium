@@ -1,20 +1,10 @@
 {include file='header.tpl'}
 <div class="container">
-	<legend>
-		<div class="container">Hello, {$user[0]}
-			<div class="pull-right">
-				{if $admin}
-					<form action="{$base_url}/admin/" method="get">
-						<button class="btn btn-help">Admin</button>
-					</form>
-				{/if}
-			</div>
-		</div>
-	</legend>
+	<legend>Hello, {$user[0]}</legend>
 	<div class="container">
-		{if $messages}
+		{if $errors}
 			<div class="hero-unit">
-				<p>{$messages}</p>
+				<p>{$errors}</p>
 			</div>
 		{/if}
 		{if $listings}	

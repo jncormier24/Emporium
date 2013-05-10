@@ -17,18 +17,16 @@
 			<tbody id="listings_TB">
 				{foreach from=$users item=user}
 					<tr>
-						<form method="GET" action="delete">
-							<td>
-								{$user['email']}
-							</td>
-							<td>
-								{$user['u_id']}
-							</td>
-							<td>
-								<button class="btn btn-danger pull-right" type="submit">Delete</button>
-							</td>
-							<input type="hidden" name="post_id" value="{$user['u_id']}" />
-						</form>
+						<td>
+							{$user['email']}
+						</td>
+						<td>
+							{$user['u_id']}
+						</td>
+						<td>
+							<button class="btn btn-danger pull-right" type="submit">Delete</button>
+						</td>
+						<input type="hidden" name="post_id" value="{$user['u_id']}" />
 					</tr>
 				{/foreach}
 			</tbody>
@@ -38,16 +36,21 @@
 			<thead>
 				<tr>
 					<th>Items</th>
+					<th>Item ID</th>
 					<th>User ID</th>
 					<th>Type</th>
+					<th>Deleted</th>
 				</tr>
 			</thead>
 			<tbody id="listings_TB">
 				{foreach from=$items item=item}
-					<tr>
-						<form method="GET" action="{$base_url}/delete">
+					<form method="POST" action="admin_delete/">
+						<tr>	
 							<td>
 							<a href="{$base_url}/classified/{$item['list_id']}">{$item['title']}</a>
+							</td>
+							<td>
+								{$item['list_id']}
 							</td>
 							<td>
 								{$item['u_id']}
@@ -62,8 +65,8 @@
 								<button class="btn btn-danger pull-right" type="submit">Delete</button>
 							</td>
 							<input type="hidden" name="post_id" value="{$item['list_id']}" />
-						</form>
-					</tr>
+						</tr>
+					</form>
 				{/foreach}
 			</tbody>
 		</table>

@@ -17,7 +17,7 @@
 					<ul class="nav">
 				    	<li><a href="{$base_url}/logout">Logout</a></li>
 				    	{if $admin == 1 }
-				    		<li><a href="{$base_url}/admin">Admin</a></li>
+				    		<li><a href="{$base_url}/admin/">Admin</a></li>
 				    	{/if}
 					</ul>	
 					<!--form method="get" action="classifieds/">

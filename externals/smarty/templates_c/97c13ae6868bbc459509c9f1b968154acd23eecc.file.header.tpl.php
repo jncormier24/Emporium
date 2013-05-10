@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-05 22:54:01
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-09 20:50:44
          compiled from "./templates/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:234029118517ab243d19c67-58564441%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '97c13ae6868bbc459509c9f1b968154acd23eecc' => 
     array (
       0 => './templates/header.tpl',
-      1 => 1367808839,
+      1 => 1368147042,
       2 => 'file',
     ),
   ),
@@ -52,7 +52,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 /logout">Logout</a></li>
 				    	<?php if ($_smarty_tpl->tpl_vars['admin']->value==1){?>
 				    		<li><a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-/admin">Admin</a></li>
+/admin/">Admin</a></li>
 				    	<?php }?>
 					</ul>	
 					<!--form method="get" action="classifieds/">

@@ -13,19 +13,19 @@
 					 	<div class="control-group"  >
 					    	<label class="control-label" for="inputEmail">Email</label>
 					    	<div class="controls">
-						    	<input type="text" id="inputEmail" placeholder="Email" name="email">						    	
+						    	<input type="text" id="inputEmail" placeholder="Email" name="email" required="email">						    	
 						    </div>
 						</div>
 						<div class="control-group">
 					    	<label class="control-label" for="inputPassword">Password</label>
 					    	<div class="controls">
-						    	<input type="password" id="inputPassword" placeholder="Password" name="password">					
+						    	<input type="password" id="inputPassword" placeholder="Password" name="password" required>					
 						    </div>
 						</div>
 						<div class="control-group">
 					    	<label class="control-label" for="inputPassword">Re-type Password</label>
 					    	<div class="controls">
-						    	<input type="password" id="retypePassword" placeholder="Password" name="repassword">
+						    	<input type="password" id="retypePassword" placeholder="Password" name="repassword" required>
 						    </div>
 						</div>
 						<div class="control-group">
@@ -41,13 +41,13 @@
 						<div class="control-group">
 					    	<label class="control-label" for="inputAnswer">Answer</label>
 					    	<div class="controls">
-						    	<input type="password" id="inputAnswer" placeholder="Answer" name="answer">					
+						    	<input type="password" id="inputAnswer" placeholder="Answer" name="answer" required>					
 						    </div>
 						</div>
 						<div class="control-group">
 					    	<label class="control-label" for="inputPassword">Re-type Answer</label>
 					    	<div class="controls">
-						    	<input type="password" id="retypeAnswer" placeholder="Answer" name="reanswer">
+						    	<input type="password" id="retypeAnswer" placeholder="Answer" name="reanswer" required>
 						    </div>
 						</div>
 						<div class="control-group">

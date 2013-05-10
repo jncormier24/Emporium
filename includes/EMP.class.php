@@ -176,7 +176,7 @@ class EMP{
 		$sql = "UPDATE Listings
 				SET type_id = $cat, description = '$text'
 				WHERE list_id = $list_id";
-						
+		
 		if( $rows = $db->Execute( $sql ) ){
 			return true;
 		}
@@ -308,8 +308,8 @@ class EMP{
 	function delete_posting( $post_id ){
 		$db = dblogin::dbconnect();
 		$sql = "UPDATE Listings
-						SET deleted = 1
-						WHERE list_id = '$post_id'";
+				SET deleted = 1
+				WHERE list_id = '$post_id'";
 		if( $rows = $db->Execute( $sql ) ){
 			return true;
 		}
@@ -322,10 +322,10 @@ class EMP{
 	 * paramters: type, item_id
 	 * returns: boolean
 	 * **/
-	function admin_delete( $type, $item_id ){
+	function admin_delete( $item_id ){
 		$db = dblogin::dbconnect();
-		$sql = "DELETE FROM $type
-						WHERE list_id = $item_id";
+		$sql = "DELETE FROM Listings
+				WHERE list_id = $item_id";
 		
 		if( $rows = $db->Execute( $sql ) ){
 			return true;

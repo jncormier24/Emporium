@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-05-05 23:29:33
+<?php /* Smarty version Smarty-3.1.13, created on 2013-05-09 23:34:20
          compiled from "./templates/registration.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1870059316517ae2d1bb3979-52887742%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b4d6eb125bc74eda2c937147d3bd5cd8710da1ce' => 
     array (
       0 => './templates/registration.tpl',
-      1 => 1367810964,
+      1 => 1368153068,
       2 => 'file',
     ),
   ),
@@ -44,19 +44,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					 	<div class="control-group"  >
 					    	<label class="control-label" for="inputEmail">Email</label>
 					    	<div class="controls">
-						    	<input type="text" id="inputEmail" placeholder="Email" name="email">						    	
+						    	<input type="text" id="inputEmail" placeholder="Email" name="email" required="email">						    	
 						    </div>
 						</div>
 						<div class="control-group">
 					    	<label class="control-label" for="inputPassword">Password</label>
 					    	<div class="controls">
-						    	<input type="password" id="inputPassword" placeholder="Password" name="password">					
+						    	<input type="password" id="inputPassword" placeholder="Password" name="password" required>					
 						    </div>
 						</div>
 						<div class="control-group">
 					    	<label class="control-label" for="inputPassword">Re-type Password</label>
 					    	<div class="controls">
-						    	<input type="password" id="retypePassword" placeholder="Password" name="repassword">
+						    	<input type="password" id="retypePassword" placeholder="Password" name="repassword" required>
 						    </div>
 						</div>
 						<div class="control-group">
@@ -72,13 +72,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<div class="control-group">
 					    	<label class="control-label" for="inputAnswer">Answer</label>
 					    	<div class="controls">
-						    	<input type="password" id="inputAnswer" placeholder="Answer" name="answer">					
+						    	<input type="password" id="inputAnswer" placeholder="Answer" name="answer" required>					
 						    </div>
 						</div>
 						<div class="control-group">
 					    	<label class="control-label" for="inputPassword">Re-type Answer</label>
 					    	<div class="controls">
-						    	<input type="password" id="retypeAnswer" placeholder="Answer" name="reanswer">
+						    	<input type="password" id="retypeAnswer" placeholder="Answer" name="reanswer" required>
 						    </div>
 						</div>
 						<div class="control-group">
